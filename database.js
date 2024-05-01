@@ -20,16 +20,16 @@ export async function getUser(id){
     const [result] = await dbconnection.query(`
     SELECT *
     FROM User
-    WHERE UID = ?`
+    WHERE UserID = ?`
     , [id])
     return result[0]
 }
 
-export async function createUser(Username, FName, LName, DOB, Weight, Height, Email, Avatar){
+export async function createUser(Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar){
     const [result] = await dbconnection.query(`
-    INSERT INTO User (Username, FName, LName, DOB, Weight, Height, Email, Avatar)
-    VALUES(?,?,?,?,?,?,?,?)
-    `, [Username, FName, LName, DOB, Weight, Height, Email, Avatar])
+    INSERT INTO User (Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar)
+    VALUES(?,?,?,?,?,?,?,?,?)
+    `, [Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar])
     const id = result.insertId
     return getUser(id)
 }

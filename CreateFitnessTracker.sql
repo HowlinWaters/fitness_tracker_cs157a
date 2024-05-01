@@ -2,8 +2,9 @@ CREATE SCHEMA IF NOT EXISTS fitnesstracker;
 USE fitnesstracker;
 
 CREATE TABLE User (
-    UID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT AUTO_INCREMENT PRIMARY KEY,
     Username VARCHAR(50),
+    Password VARCHAR(50),
     FName VARCHAR(50),
     LName VARCHAR(50),
     DOB DATE,
@@ -13,11 +14,107 @@ CREATE TABLE User (
     Avatar VARCHAR(100)
 );
 
-INSERT INTO User (Username, FName, LName, DOB, Weight, Height, Email, Avatar)
-VALUES 
-('johndoe', 'John', 'Doe', '1985-05-15', '180lbs', '5ft 9in', 'john.doe@example.com', 'avatar001.jpg');
+CREATE TABLE FriendList (
+    FriendListID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    FriendID INT,
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
+    FOREIGN KEY (FriendID) REFERENCES User(UserID) ON DELETE CASCADE
+);
+CREATE TABLE HasFriends (
+    UserID INT, 
+    FriendListID INT, 
+    PRIMARY KEY (UserID, FriendListID),
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
+    FOREIGN KEY (FriendListID) REFERENCES FriendList(FriendListID) ON DELETE CASCADE
+);
+CREATE TABLE FriendViewProfile (
+    UserID INT,
+    FriendListID INT,
+    PRIMARY KEY(UserID, FriendListID),
+    FOREIGN KEY (FriendListID) REFERENCES FriendList(FriendListID) ON DELETE CASCADE, 
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
+);
 
-INSERT INTO User (Username, FName, LName, DOB, Weight, Height, Email, Avatar)
-VALUES 
-('janedoe', 'Jane', 'Doe', '1990-07-22', '130lbs', '5ft 5in', 'jane.doe@example.com', 'avatar002.jpg');
+CREATE TABLE FitnessGoal (
+    FitnessGoalID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    Descriptions TEXT,
+    CaloriesBurnt INT,
+    CaloriesConsumed INT,
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
+);
+
+CREATE TABLE Location (
+    LocationID INT AUTO_INCREMENT PRIMARY KEY,
+    Address VARCHAR(255),
+    City VARCHAR(255),
+    State VARCHAR(255),
+    BuildingName VARCHAR(255)
+);
+
+CREATE TABLE Activities (
+    ActivityID INT AUTO_INCREMENT PRIMARY KEY,
+    ActivityName VARCHAR(255),
+    DurationTime TIME,
+    TotalCaloriesBurnt INT
+);
+
+CREATE TABLE TracksActivities (
+    UserID INT,
+    ActivityID INT,
+    PRIMARY KEY(UserID, ActivityID),
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE, 
+    FOREIGN KEY (ActivityID) REFERENCES Activities(ActivityID) ON DELETE CASCADE
+);
+
+CREATE TABLE ActivityLocation (
+    ActivityID INT,
+    LocationID INT,
+    PRIMARY KEY (ActivityID, LocationID),
+    FOREIGN KEY (ActivityID) REFERENCES Activities(ActivityID) ON DELETE CASCADE, 
+    FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
+);
+
+CREATE TABLE Profile (
+    ProfileID INT AUTO_INCREMENT PRIMARY KEY,
+    UserID INT,
+    ProfileName VARCHAR(255),
+    Visibility VARCHAR(255),
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
+);
+
+CREATE TABLE FavLocationWall (
+    FavWallID INT AUTO_INCREMENT PRIMARY KEY,
+    ProfileID INT,
+    LocationID INT,
+    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE, 
+    FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
+);
+
+CREATE TABLE Milestones (
+    ProfileID INT,
+    Milestone VARCHAR(255),
+    PRIMARY KEY(ProfileID),
+    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
+);
+
+CREATE TABLE Comment (
+    CommentID INT AUTO_INCREMENT PRIMARY KEY,
+    ProfileID INT,
+    Content TEXT,
+    UserID INT,
+    PublishDate DATE,
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE, 
+    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
+);
+
+INSERT INTO User (Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar) 
+VALUES ('bob', 'basd', 'dsf', 'dsf', '1985-05-15', 'dsf', 'dsf', 'dsf', 'dsf');
+
+
+
+
+
+
 

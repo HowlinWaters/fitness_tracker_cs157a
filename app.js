@@ -17,10 +17,11 @@ app.get("/users/:id", async (req, res) => {
 });
 
 app.post("/createusers", async (req, res) => {
-  const { Username, FName, LName, DOB, Weight, Height, Email, Avatar } =
+  const { Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar } =
     req.body
   const user = await createUser(
     Username,
+    Password, 
     FName,
     LName,
     DOB,
