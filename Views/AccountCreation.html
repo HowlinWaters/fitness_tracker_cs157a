@@ -47,6 +47,10 @@
       form {
         text-align: center;
       }
+      h2 {
+        text-align: center; /* Center align the h2 element */
+        margin-bottom: 20px; /* Add margin below the h2 */
+      }
       label {
         display: block;
         margin-bottom: 10px;
@@ -76,15 +80,19 @@
   <body>
     <!-- Header section with buttons -->
     <header>
-      <button>Button 1</button>
+      <button onclick="window.location.href='https://www.youtube.com'">
+        Youtube
+      </button>
       <button>Button 2</button>
       <button>Button 3</button>
       <button>Button 4</button>
-      <button>Button 5</button>
+      <a href="https://google.com">Go to Google!</a>
+      <!-- Example of using hyperlinks for swapping between websites and html files -->
     </header>
     <!-- Form container -->
     <div class="form-container">
-      <h2>User Information Form</h2>
+      <h2>User Information</h2>
+      <!-- Centered heading -->
       <form action="submit_user_info.php" method="post">
         <div class="form-row">
           <label for="username">Username:</label>
@@ -118,7 +126,7 @@
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required />
         </div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Create Account" />
       </form>
     </div>
   </body>
