@@ -10,30 +10,7 @@ CREATE TABLE User (
     DOB DATE,
     Weight VARCHAR(50),
     Height VARCHAR(50),
-    Email VARCHAR(100),
-    Avatar VARCHAR(100)
-);
-
-CREATE TABLE FriendList (
-    FriendListID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
-    FriendID INT,
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
-    FOREIGN KEY (FriendID) REFERENCES User(UserID) ON DELETE CASCADE
-);
-CREATE TABLE HasFriends (
-    UserID INT, 
-    FriendListID INT, 
-    PRIMARY KEY (UserID, FriendListID),
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE,
-    FOREIGN KEY (FriendListID) REFERENCES FriendList(FriendListID) ON DELETE CASCADE
-);
-CREATE TABLE FriendViewProfile (
-    UserID INT,
-    FriendListID INT,
-    PRIMARY KEY(UserID, FriendListID),
-    FOREIGN KEY (FriendListID) REFERENCES FriendList(FriendListID) ON DELETE CASCADE, 
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
+    Email VARCHAR(100)
 );
 
 CREATE TABLE FitnessGoal (
@@ -56,7 +33,7 @@ CREATE TABLE Location (
 CREATE TABLE Activities (
     ActivityID INT AUTO_INCREMENT PRIMARY KEY,
     ActivityName VARCHAR(255),
-    DurationTime TIME,
+    DurationTime INT,
     TotalCaloriesBurnt INT
 );
 
@@ -80,7 +57,6 @@ CREATE TABLE Profile (
     ProfileID INT AUTO_INCREMENT PRIMARY KEY,
     UserID INT,
     ProfileName VARCHAR(255),
-    Visibility VARCHAR(255),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
 );
 
@@ -94,7 +70,7 @@ CREATE TABLE FavLocationWall (
 
 CREATE TABLE Milestones (
     ProfileID INT,
-    Milestone VARCHAR(255),
+    Milestone TEXT,
     PRIMARY KEY(ProfileID),
     FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
 );
@@ -109,6 +85,7 @@ CREATE TABLE Comment (
     FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
 );
 
+-- example
 INSERT INTO User (Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar) 
 VALUES ('bob', 'basd', 'dsf', 'dsf', '1985-05-15', 'dsf', 'dsf', 'dsf', 'dsf');
 
