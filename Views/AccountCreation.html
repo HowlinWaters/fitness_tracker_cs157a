@@ -5,27 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Information Form</title>
     <style>
-      /* CSS styles for the header */
-      header {
-        background-color: #f4f4f4; /* Dark background color */
-        color: #fff; /* Text color */
-        padding: 10px 0; /* Padding top and bottom */
-        text-align: center; /* Center align text */
-        width: 100%; /* Stretch from left to right */
-        position: fixed; /* Fixed position */
-        top: 0; /* Positioned at the top */
-        left: 0; /* Positioned at the left */
-        z-index: 1000; /* Ensure header appears above other content */
-      }
-      header button {
-        background-color: #007bff; /* Blue button color */
-        color: #fff; /* Button text color */
-        border: none; /* No border */
-        padding: 10px 20px; /* Padding inside button */
-        margin: 0 10px; /* Margin between buttons */
-        border-radius: 5px; /* Rounded corners */
-        cursor: pointer; /* Show pointer on hover */
-      }
       /* CSS styles for the rest of the page */
       body {
         display: flex;
@@ -34,7 +13,6 @@
         height: 100vh;
         margin: 0;
         flex-direction: column; /* Align items vertically */
-        padding-top: 50px; /* Add space for the fixed header */
       }
       .form-container {
         background-color: #f4f4f4;
@@ -42,7 +20,6 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         width: 400px;
-        margin-top: 20px; /* Add margin between header and form */
       }
       form {
         text-align: center;
@@ -78,41 +55,30 @@
     </style>
   </head>
   <body>
-    <!-- Header section with buttons -->
-    <header>
-      <button onclick="window.location.href='https://www.youtube.com'">
-        Youtube
-      </button>
-      <button>Button 2</button>
-      <button>Button 3</button>
-      <button>Button 4</button>
-      <a href="https://google.com">Go to Google!</a>
-      <!-- Example of using hyperlinks for swapping between websites and html files -->
-    </header>
     <!-- Form container -->
     <div class="form-container">
-      <h2>User Information</h2>
+      <h2>User Information Form</h2>
       <!-- Centered heading -->
-      <form action="submit_user_info.php" method="post">
+      <form id="userForm" action="#">
         <div class="form-row">
           <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required />
+          <input type="text" id="username" name="username" />
         </div>
         <div class="form-row">
           <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password" />
         </div>
         <div class="form-row">
           <label for="fname">First Name:</label>
-          <input type="text" id="fname" name="fname" required />
+          <input type="text" id="fname" name="fname" />
         </div>
         <div class="form-row">
           <label for="lname">Last Name:</label>
-          <input type="text" id="lname" name="lname" required />
+          <input type="text" id="lname" name="lname" />
         </div>
         <div class="form-row">
           <label for="dob">Date of Birth:</label>
-          <input type="date" id="dob" name="dob" required />
+          <input type="date" id="dob" name="dob" />
         </div>
         <div class="form-row">
           <label for="weight">Weight:</label>
@@ -124,10 +90,68 @@
         </div>
         <div class="form-row">
           <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="email" />
         </div>
-        <input type="submit" value="Create Account" />
+        <input
+          type="submit"
+          value="Create Account, Save info in LocalStorage"
+          onclick="saveUserData()"
+        />
+        <input
+          type="submit"
+          value="Clear LocalStorage"
+          onclick="resetStorage()"
+          style="margin-top: 5px"
+        />
       </form>
     </div>
+
+    <script>
+      function saveUserData() {
+        event.preventDefault();
+        // Get form inputs
+        let username = document.getElementById("username").value || null;
+        let password = document.getElementById("password").value || null;
+        let fname = document.getElementById("fname").value || null;
+        let lname = document.getElementById("lname").value || null;
+        let dob = document.getElementById("dob").value || null;
+        let weight = document.getElementById("weight").value || null;
+        let height = document.getElementById("height").value || null;
+        let email = document.getElementById("email").value || null;
+
+        // reset the form
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("fname").value = "";
+        document.getElementById("lname").value = "";
+        document.getElementById("dob").value = "";
+        document.getElementById("weight").value = "";
+        document.getElementById("height").value = "";
+        document.getElementById("email").value = "";
+
+        // Create user object
+        let userData = {
+          username: username,
+          password: password,
+          fname: fname,
+          lname: lname,
+          dob: dob,
+          weight: weight,
+          height: height,
+          email: email,
+        };
+
+        // Store user data in local storage with key 'currentUser'
+        localStorage.setItem("currentUser", JSON.stringify(userData));
+
+        // Alert to confirm data has been saved
+        alert("User data saved to local storage.");
+      }
+
+      function resetStorage() {
+        event.preventDefault();
+        localStorage.removeItem("currentUser");
+      }
+    </script>
   </body>
 </html>
