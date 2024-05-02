@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Information Form</title>
+    <style>
+      /* CSS styles for the header */
+      header {
+        background-color: #f4f4f4; /* Dark background color */
+        color: #fff; /* Text color */
+        padding: 10px 0; /* Padding top and bottom */
+        text-align: center; /* Center align text */
+        width: 100%; /* Stretch from left to right */
+        position: fixed; /* Fixed position */
+        top: 0; /* Positioned at the top */
+        left: 0; /* Positioned at the left */
+        z-index: 1000; /* Ensure header appears above other content */
+      }
+      header button {
+        background-color: #007bff; /* Blue button color */
+        color: #fff; /* Button text color */
+        border: none; /* No border */
+        padding: 10px 20px; /* Padding inside button */
+        margin: 0 10px; /* Margin between buttons */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Show pointer on hover */
+      }
+      /* CSS styles for the rest of the page */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        flex-direction: column; /* Align items vertically */
+        padding-top: 50px; /* Add space for the fixed header */
+      }
+      .form-container {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        margin-top: 20px; /* Add margin between header and form */
+      }
+      form {
+        text-align: center;
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .form-row input {
+        width: 48%;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header section with buttons -->
+    <header>
+      <button>Button 1</button>
+      <button>Button 2</button>
+      <button>Button 3</button>
+      <button>Button 4</button>
+      <button>Button 5</button>
+    </header>
+    <!-- Form container -->
+    <div class="form-container">
+      <h2>User Information Form</h2>
+      <form action="submit_user_info.php" method="post">
+        <div class="form-row">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="form-row">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-row">
+          <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="fname" required />
+        </div>
+        <div class="form-row">
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="lname" required />
+        </div>
+        <div class="form-row">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required />
+        </div>
+        <div class="form-row">
+          <label for="weight">Weight:</label>
+          <input type="text" id="weight" name="weight" />
+        </div>
+        <div class="form-row">
+          <label for="height">Height:</label>
+          <input type="text" id="height" name="height" />
+        </div>
+        <div class="form-row">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
