@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activities</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Styles/ActivityPageStyle.css">
 </head>
 <body>
     <header>
         <h1>Activities</h1>
     </header>
     <main>
-        <button id="addEntryButton">Add Entry</button>
+        <button id="addEntryButton" style="margin-bottom: 20px;">New Activity</button>
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Duration</th>
-                    <th>Calories</th>
+                    <th>Activity</th>
+                    <th>Duration (min)</th>
+                    <th>Calories Burned</th>
                 </tr>
             </thead>
             <tbody id="activityTableBody">
@@ -29,9 +29,9 @@
     <script>
         // JavaScript to handle adding entries to the table
         document.getElementById('addEntryButton').addEventListener('click', function() {
-            var name = prompt('Enter activity name:');
-            var duration = prompt('Enter activity duration (mins):');
-            var calories = prompt('Enter calorie count:');
+            var name = prompt('Enter activity:');
+            var duration = prompt('Enter duration (minutes):');
+            var calories = prompt('Enter calories burned:');
             
             if (name && duration && calories) {
                 var tableBody = document.getElementById('activityTableBody');
