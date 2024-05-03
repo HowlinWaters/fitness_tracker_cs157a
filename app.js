@@ -18,7 +18,9 @@ import {
   getActivities, 
   createActivities, 
   updateActivities, 
-  deleteActivities
+  deleteActivities, 
+  getTracksActivities, 
+  createTracksActivities
 } from "./database.js";
 
 const app = express();
@@ -212,6 +214,19 @@ app.delete("/deleteactivities/:id", async (req, res) => {
 //end of activities
 
 //start of trackactivities
+app.get("/tracksactivities/:id", async (req, res) => {
+  const id = req.params.id;
+  const trackactivity = await getTracksActivities(id);
+  res.send(trackactivity);
+});
+
+app.post("/createtracksactivities", async (req, res) => {
+  const { UserID, ActivityID } = req.body;
+  const trackactivity = await createTracksActivities(
+    UserID, ActivityID
+  );
+  res.status(201).send(trackactivity);
+});
 //end of trackactivities
 
 //start of activitylocation

@@ -94,7 +94,6 @@ INSERT INTO Location (Address, City, State, BuildingName)
 VALUES ("bobadb", "dsfadsf", "asda", "A");
 
 INSERT INTO Activities (ActivityName, DurationTime, TotalCaloriesBurnt)
-VALUES ("asdf", 23, 32)
-
+VALUES ("asdf", 23, 32);
 
 

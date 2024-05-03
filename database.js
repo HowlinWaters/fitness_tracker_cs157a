@@ -249,6 +249,22 @@ export async function deleteActivities(ActivityID) {
 //end of activities
 
 //start of trackactivities
+export async function getTracksActivities(id) {
+  const [result] = await dbconnection.query(
+    `SELECT * FROM TracksActivities WHERE UserID = ?`,
+    [id]
+  );
+  return result[0];
+}
+
+export async function createTracksActivities(UserID, ActivityID) {
+  const [result] = await dbconnection.query(
+    `INSERT INTO TracksActivities (UserID, ActivityID)
+    VALUES (?, ?)`,
+    [UserID, ActivityID]
+  );
+  return getTracksActivities(UserID);
+}
 //end of trackactivities
 
 //start of activitylocation
