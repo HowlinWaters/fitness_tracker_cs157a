@@ -54,17 +54,15 @@ CREATE TABLE ActivityLocation (
 );
 
 CREATE TABLE Profile (
-    ProfileID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
+    ProfileID INT,
     ProfileName VARCHAR(255),
-    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
+    FOREIGN KEY (ProfileID) REFERENCES User(UserID) ON DELETE CASCADE
 );
 
 CREATE TABLE FavLocationWall (
-    FavWallID INT AUTO_INCREMENT PRIMARY KEY,
-    ProfileID INT,
+    FavLocationWallID INT PRIMARY KEY,
     LocationID INT,
-    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE, 
+    FOREIGN KEY (FavLocationWallID) REFERENCES Profile(ProfileID) ON DELETE CASCADE,
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
 );
 
@@ -76,22 +74,32 @@ CREATE TABLE Milestones (
 );
 
 CREATE TABLE Comment (
-    CommentID INT AUTO_INCREMENT PRIMARY KEY,
     ProfileID INT,
     Content TEXT,
     UserID INT,
     PublishDate DATE,
+    PRIMARY KEY (UserID, ProfileID),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE, 
     FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
 );
 
 -- example
-INSERT INTO User (Username, Password, FName, LName, DOB, Weight, Height, Email, Avatar) 
-VALUES ('bob', 'basd', 'dsf', 'dsf', '1985-05-15', 'dsf', 'dsf', 'dsf', 'dsf');
+INSERT INTO User (Username, Password, FName, LName, DOB, Weight, Height, Email) 
+VALUES ('bob', 'basd', 'dsf', 'dsf', '1985-05-15', 'dsf', 'dsf', 'dsf');
 
+INSERT INTO FitnessGoal (UserID, Descriptions, CaloriesBurnt, CaloriesConsumed)
+VALUES (1, "blob", 100,  100);
 
+INSERT INTO Location (Address, City, State, BuildingName)
+VALUES ("bobadb", "dsfadsf", "asda", "A");
 
+INSERT INTO Location (Address, City, State, BuildingName)
+VALUES ("bobadb", "dsfadsf", "asda", "A");
 
+INSERT INTO Activities (ActivityName, DurationTime, TotalCaloriesBurnt)
+VALUES ("asdf", 23, 32);
 
+INSERT INTO Profile (ProfileID, ProfileName)
+VALUES (1, "bibly")
 
 
