@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Information Form</title>
+    <style>
+      /* CSS styles for the rest of the page */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        margin-top: 0px;
+        flex-direction: column; /* Align items vertically */
+      }
+      .form-container {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+      }
+      form {
+        text-align: center;
+      }
+      h2 {
+        text-align: center; /* Center align the h2 element */
+        margin-bottom: 20px; /* Add margin below the h2 */
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .form-row input {
+        width: 48%;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Form container -->
+    <div class="form-container">
+      <h2>User Information Form</h2>
+      <!-- Centered heading -->
+      <form id="userForm" action="#">
+        <div class="form-row">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" />
+        </div>
+        <div class="form-row">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <a href="AccountCreation.html" target="Profile">Create Account</a>
+        <input
+          type="submit"
+          value="Login, Save info in LocalStorage"
+          onclick="saveUserData()"
+          style="margin-top: 5px"
+        />
+        <input
+          type="submit"
+          value="Clear LocalStorage"
+          onclick="resetStorage()"
+          style="margin-top: 5px"
+        />
+      </form>
+    </div>
+    <script>
+      function saveUserData() {
+        event.preventDefault();
+        // Get form inputs
+        let username = document.getElementById("username").value || null;
+        let password = document.getElementById("password").value || null;
+
+        // reset the form
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+
+        // Create user object
+        let userData = {
+          username: username,
+          password: password,
+        };
+
+        // Store user data in local storage with key 'currentUser'
+        localStorage.setItem("currentUser", JSON.stringify(userData));
+
+        // Alert to confirm data has been saved
+        alert("User data saved to local storage.");
+      }
+
+      function resetStorage() {
+        event.preventDefault();
+        localStorage.removeItem("currentUser");
+      }
+    </script>
+  </body>
+</html>
