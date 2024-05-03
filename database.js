@@ -268,12 +268,92 @@ export async function createTracksActivities(UserID, ActivityID) {
 //end of trackactivities
 
 //start of activitylocation
+export async function getActivityLocation(id) {
+  const [result] = await dbconnection.query(
+    `SELECT * FROM ActivityLocation WHERE ActivityID = ?`,
+    [id]
+  );
+  return result[0];
+}
+
+export async function createActivityLocation(ActivityID, LocationID) {
+  const [result] = await dbconnection.query(
+    `INSERT INTO ActivityLocation (ActivityID, LocationID)
+    VALUES (?, ?)`,
+    [ActivityID, LocationID]
+  );
+  return getActivityLocation(ActivityID);
+}
 //end of activitylocation
 
 //start of profile
+export async function getProfile(id) {
+  const [result] = await dbconnection.query(
+    `SELECT * FROM Profile WHERE ProfileID = ?`,
+    [id]
+  );
+  return result[0];
+}
+
+export async function createProfile(ProfileName, UserID) {
+  const [result] = await dbconnection.query(
+    `INSERT INTO Profile (ProfileID, ProfileName)
+    VALUES (?, ?)`,
+    [UserID, ProfileName]
+  );
+  return getProfile(UserID);
+}
+
+export async function updateProfile(ProfileName, UserID) {
+  const [result] = await dbconnection.query(
+    `
+    UPDATE Profile 
+    SET ProfileName = ?
+    WHERE ProfileID = ?`,
+    [ProfileName, UserID]
+  );
+  return getProfile(UserID);
+}
 //end of profile
 
 //start of favlocationwall
+export async function getFavLocationWall(id) {
+  const [result] = await dbconnection.query(
+    `SELECT * FROM FavLocationWall WHERE FavLocationWallID = ?`,
+    [id]
+  );
+  return result[0];
+}
+
+export async function addFavLocationWall(FavLocationWallID, LocationID) {
+  const [result] = await dbconnection.query(
+    `INSERT INTO FavLocationWall (FavLocationWallID, LocationID)
+    VALUES (?, ?)`,
+    [FavLocationWallID, LocationID]
+  );
+  const id = result.insertId;
+  return getFavLocationWall(FavLocationWallID);
+}
+
+export async function updateFavLocationWall(FavLocationWallID, LocationID) {
+  const [result] = await dbconnection.query(
+    `
+    UPDATE FavLocationWall 
+    SET LocationID = ?
+    WHERE FavLocationWallID = ?`,
+    [LocationID, FavLocationWallID]
+  );
+  return getFavLocationWall(FavLocationWallID);
+}
+
+export async function deleteFavLocationWall(FavLocationWallID, LocationID) {
+  const [result] = await dbconnection.query(
+    `
+    DELETE FROM FavLocationWall WHERE LocationID = ? AND FavLocationWallID = ?`,
+    [LocationID, FavLocationWallID]
+  );
+  return result.affectedRows;
+}
 //end of favlocationwall
 
 //start of milestones

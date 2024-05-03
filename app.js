@@ -15,12 +15,21 @@ import {
   createLocation,
   updateLocations,
   deleteLocation,
-  getActivities, 
-  createActivities, 
-  updateActivities, 
-  deleteActivities, 
-  getTracksActivities, 
-  createTracksActivities
+  getActivities,
+  createActivities,
+  updateActivities,
+  deleteActivities,
+  getTracksActivities,
+  createTracksActivities,
+  getActivityLocation,
+  createActivityLocation,
+  getProfile,
+  createProfile,
+  updateProfile,
+  getFavLocationWall, 
+  addFavLocationWall, 
+  updateFavLocationWall, 
+  deleteFavLocationWall
 } from "./database.js";
 
 const app = express();
@@ -222,20 +231,69 @@ app.get("/tracksactivities/:id", async (req, res) => {
 
 app.post("/createtracksactivities", async (req, res) => {
   const { UserID, ActivityID } = req.body;
-  const trackactivity = await createTracksActivities(
-    UserID, ActivityID
-  );
+  const trackactivity = await createTracksActivities(UserID, ActivityID);
   res.status(201).send(trackactivity);
 });
 //end of trackactivities
 
 //start of activitylocation
+app.get("/activitylocation/:id", async (req, res) => {
+  const id = req.params.id;
+  const activitylocation = await getActivityLocation(id);
+  res.send(activitylocation);
+});
+
+app.post("/createactivitylocation", async (req, res) => {
+  const { ActivityID, LocationID } = req.body;
+  const activitylocation = await createActivityLocation(ActivityID, LocationID);
+  res.status(201).send(activitylocation);
+});
 //end of activitylocation
 
-//start of profile
+//start of profile and profileID and userID are the same
+app.get("/profile/:id", async (req, res) => {
+  const id = req.params.id;
+  const profile = await getProfile(id);
+  res.send(profile);
+});
+
+app.post("/createprofile", async (req, res) => {
+  const { ProfileName, ProfileID } = req.body;
+  const profile = await createProfile(ProfileName, ProfileID);
+  res.status(201).send(profile);
+});
+
+app.put("/updateprofile", async (req, res) => {
+  const { ProfileName, ProfileID } = req.body;
+  const profile = await updateProfile(ProfileName, ProfileID);
+  res.status(201).send(profile);
+});
 //end of profile
 
 //start of favlocationwall
+app.get("/favlocationwall/:id", async (req, res) => {
+  const id = req.params.id;
+  const activity = await getFavLocationWall(id);
+  res.send(activity);
+});
+
+app.post("/createfavlocationwall", async (req, res) => {
+  const { FavLocationWallID, LocationID } = req.body;
+  const activity = await addFavLocationWall(FavLocationWallID, LocationID);
+  res.status(201).send(activity);
+});
+
+app.put("/updatefavlocationwall", async (req, res) => {
+  const { FavLocationWallID, LocationID } = req.body;
+  const activity = await updateFavLocationWall(FavLocationWallID, LocationID);
+  res.status(201).send(activity);
+});
+
+app.delete("/deletefavlocationwall", async (req, res) => {
+  const { FavLocationWallID, LocationID } = req.body;
+  const activity = await deleteFavLocationWall(FavLocationWallID, LocationID);
+  res.send(activity);
+});
 //end of favlocationwall
 
 //start of milestones

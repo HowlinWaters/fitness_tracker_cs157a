@@ -60,9 +60,9 @@ CREATE TABLE Profile (
 );
 
 CREATE TABLE FavLocationWall (
-    ProfileID INT PRIMARY KEY,
+    FavLocationWallID INT PRIMARY KEY,
     LocationID INT,
-    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE,
+    FOREIGN KEY (FavLocationWallID) REFERENCES Profile(ProfileID) ON DELETE CASCADE,
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
 );
 
@@ -93,7 +93,13 @@ VALUES (1, "blob", 100,  100);
 INSERT INTO Location (Address, City, State, BuildingName)
 VALUES ("bobadb", "dsfadsf", "asda", "A");
 
+INSERT INTO Location (Address, City, State, BuildingName)
+VALUES ("bobadb", "dsfadsf", "asda", "A");
+
 INSERT INTO Activities (ActivityName, DurationTime, TotalCaloriesBurnt)
 VALUES ("asdf", 23, 32);
+
+INSERT INTO Profile (ProfileID, ProfileName)
+VALUES (1, "bibly")
 
 
