@@ -15,6 +15,10 @@ import {
   createLocation,
   updateLocations,
   deleteLocation,
+  getActivities, 
+  createActivities, 
+  updateActivities, 
+  deleteActivities
 } from "./database.js";
 
 const app = express();
@@ -172,6 +176,39 @@ app.delete("/deletelocations/:id", async (req, res) => {
 //end of location
 
 //start of activities
+app.get("/activities/:id", async (req, res) => {
+  const id = req.params.id;
+  const activity = await getActivities(id);
+  res.send(activity);
+});
+
+app.post("/createactivities", async (req, res) => {
+  const { ActivityName, DurationTime, TotalCaloriesBurnt } = req.body;
+  const activity = await createActivities(
+    ActivityName,
+    DurationTime,
+    TotalCaloriesBurnt
+  );
+  res.status(201).send(activity);
+});
+
+app.put("/updateactivities", async (req, res) => {
+  const { ActivityName, DurationTime, TotalCaloriesBurnt, ActivityID } =
+    req.body;
+  const activity = await updateActivities(
+    ActivityName,
+    DurationTime,
+    TotalCaloriesBurnt,
+    ActivityID
+  );
+  res.status(201).send(activity);
+});
+
+app.delete("/deleteactivities/:id", async (req, res) => {
+  const id = req.params.id;
+  const activity = await deleteActivities(id);
+  res.send(activity);
+});
 //end of activities
 
 //start of trackactivities

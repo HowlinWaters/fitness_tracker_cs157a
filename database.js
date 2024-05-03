@@ -200,6 +200,52 @@ export async function deleteLocation(LocationID) {
 //end of location
 
 //start of activities
+export async function getActivities(id) {
+  const [result] = await dbconnection.query(
+    `SELECT * FROM Activities WHERE ActivityID = ?`,
+    [id]
+  );
+  return result[0];
+}
+
+export async function createActivities(
+  ActivityName,
+  DurationTime,
+  TotalCaloriesBurnt
+) {
+  const [result] = await dbconnection.query(
+    `INSERT INTO Activities (ActivityName, DurationTime, TotalCaloriesBurnt)
+      VALUES (?, ?, ?)`,
+    [ActivityName, DurationTime, TotalCaloriesBurnt]
+  );
+  const id = result.insertId;
+  return getActivities(id);
+}
+
+export async function updateActivities(
+  ActivityName,
+  DurationTime,
+  TotalCaloriesBurnt,
+  ActivityID
+) {
+  const [result] = await dbconnection.query(
+    `
+    UPDATE Activities 
+    SET ActivityName = ?, DurationTime = ?, TotalCaloriesBurnt = ?
+    WHERE ActivityID = ?`,
+    [ActivityName, DurationTime, TotalCaloriesBurnt, ActivityID]
+  );
+  return getActivities(ActivityID);
+}
+
+export async function deleteActivities(ActivityID) {
+  const [result] = await dbconnection.query(
+    `
+    DELETE FROM Activities WHERE ActivityID = ?`,
+    [ActivityID]
+  );
+  return result.affectedRows;
+}
 //end of activities
 
 //start of trackactivities

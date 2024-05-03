@@ -93,7 +93,8 @@ VALUES (1, "blob", 100,  100);
 INSERT INTO Location (Address, City, State, BuildingName)
 VALUES ("bobadb", "dsfadsf", "asda", "A");
 
-
+INSERT INTO Activities (ActivityName, DurationTime, TotalCaloriesBurnt)
+VALUES ("asdf", 23, 32)
 
 
 
