@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+
+    <style>
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center the list horizontally */
+        }
+        nav ul li {
+            display: inline; /* Display list items inline */
+            margin-right: 20px; /* Add some space between list items */
+        }
+        nav ul li:last-child {
+            margin-right: 0; /* Remove margin from the last list item */
+        }
+        nav ul li a {
+            text-decoration: none;
+            /* Add underline on hover */
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: #ccc;
+        }
+        
+        
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: auto; /* Push footer to the bottom */
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Fitness Tracker</h1>
+        <nav>
+            <ul>
+                <li><a href="ProfilePage.html" target="Profile">Profile</a></li>
+                <li><a href="ActivityPage.html" target="Profile">Activities</a></li>
+                <li><a href="FitnessGoalPage.html" target="Profile">Goals</a></li>
+                <li><a href="LocationWall.html" target="Profile">Locations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Content will be loaded here -->
+        <iframe name = "Profile" src="ProfilePage.html" style="display:block; border:none; height:100vh; width:100%;"></iframe>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fitness Tracker</p>
+    </footer>
+    
+</body>
+</html>

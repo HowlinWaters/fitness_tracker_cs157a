@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Activities</h1>
+    </header>
+    <main>
+        <button id="addEntryButton">Add Entry</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Duration</th>
+                    <th>Calories</th>
+                </tr>
+            </thead>
+            <tbody id="activityTableBody">
+                <!-- Table rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        // JavaScript to handle adding entries to the table
+        document.getElementById('addEntryButton').addEventListener('click', function() {
+            var name = prompt('Enter activity name:');
+            var duration = prompt('Enter activity duration (mins):');
+            var calories = prompt('Enter calorie count:');
+            
+            if (name && duration && calories) {
+                var tableBody = document.getElementById('activityTableBody');
+                var newRow = document.createElement('tr');
+                newRow.innerHTML = '<td>' + name + '</td><td>' + duration + '</td><td>' + calories + '</td>';
+                tableBody.appendChild(newRow);
+            } else {
+                alert('Please enter valid values for all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
