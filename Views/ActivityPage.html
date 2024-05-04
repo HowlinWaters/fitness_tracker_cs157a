@@ -56,14 +56,10 @@
 
         // Row can be edited once "Edit" button is pressed.
         function editRow(row) {
-            var i = row;
-            var name = document.getElementById('name-col' + i);
-            var duration = document.getElementById('dur-col' + i);
-            var calories = document.getElementById('cal-col' + i);
-
-            var nameData = name.innerHTML;
-            var durationData = duration.innerHTML;
-            var caloriesData = calories.innerHTML;
+            var table = document.getElementById('activityBodyTable');
+            var name = table.getElementById('name-col').row;
+            var duration = table.getElementById('dur-col').row;
+            var calories = table.getElementById('cal-col').row;
         }
     </script>
 </body>

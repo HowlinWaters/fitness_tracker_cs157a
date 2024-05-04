@@ -313,8 +313,8 @@ app.get("/milestones/:id", async (req, res) => {
 })
 
 app.post("/createmilestone", async (req, res) => {
-  const {Milestone, ProfileID} = req.body;
-  const milestone = await createMilestone(Milestone, ProfileID);
+  const {Milestone} = req.body;
+  const milestone = await createMilestone(Milestone);
   res.status(201).send(milestone);
 })
 
