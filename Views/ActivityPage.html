@@ -18,6 +18,8 @@
                     <th>Activity</th>
                     <th>Duration (min)</th>
                     <th>Calories Burned</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody id="activityTableBody">
@@ -36,12 +38,33 @@
             if (name && duration && calories) {
                 var tableBody = document.getElementById('activityTableBody');
                 var newRow = document.createElement('tr');
-                newRow.innerHTML = '<td>' + name + '</td><td>' + duration + '</td><td>' + calories + '</td>';
+                newRow.innerHTML = `<td id='name-col'>` + name + `</td><td id='dur-col'>` + duration + 
+                `</td><td id='cal-col'>` + calories + `</td>` + 
+                `<td><input type='button' value='Delete' onclick='deleteRow(this)'/></td>` + 
+                `<td><input type='button' value='Edit' onclick='editRow(this)'/></td>`;
                 tableBody.appendChild(newRow);
             } else {
                 alert('Please enter valid values for all fields.');
             }
         });
+
+        // Row can be deleted once "Delete" button is pressed.
+        function deleteRow(row) {
+            var i = row;
+            document.getElementById('activityTableBody').deleteRow(i);
+        }
+
+        // Row can be edited once "Edit" button is pressed.
+        function editRow(row) {
+            var i = row;
+            var name = document.getElementById('name-col' + i);
+            var duration = document.getElementById('dur-col' + i);
+            var calories = document.getElementById('cal-col' + i);
+
+            var nameData = name.innerHTML;
+            var durationData = duration.innerHTML;
+            var caloriesData = calories.innerHTML;
+        }
     </script>
 </body>
 </html>

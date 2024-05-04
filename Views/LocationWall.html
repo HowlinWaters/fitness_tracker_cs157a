@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locations</title>
+    <link rel="stylesheet" href="Styles/LocationWallStyle.css">
 </head>
 <body>
-    <h2>Locations</h2>
-    <p>This is the content of the Locations page.</p>
+    <header>
+        <h2>Locations</h2>
+    </header>
+    <main>
+        <button id="addLocation" style="margin-bottom: 5px;">Add Location</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody id="locationTableBody">
+                <!--Table rows will be added here.-->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        document.getElementById('addLocation').addEventListener('click', function() {
+            var location = prompt("Enter a location.");
+            if (location.length > 0) {
+                var tableBody = document.getElementById('locationTableBody');
+                var newRow = document.createElement('tr');
+                newRow.innerHTML = '<td>' + location + '</td>';
+                tableBody.appendChild(newRow);
+            } else {
+                alert('Error! Please write something in the text bar.');
+            }
+        });
+    </script>
 </body>
 </html>
