@@ -30,9 +30,18 @@ th {
     background-color: #f2f2f2;
 }
 
-button, input {
+button {
     padding: 10px 20px;
     background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type='button'] {
+    padding: 10px 10px;
+    background-color: crimson;
     color: #fff;
     border: none;
     border-radius: 5px;
