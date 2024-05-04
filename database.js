@@ -367,13 +367,14 @@ export async function getMilestones(id) {
     return result[0];
 }
 
-export async function createMilestone(Milestone) {
+export async function createMilestone(Milestone, ProfileID) {
     const [result] = await dbconnection.query(
         `INSERT INTO Milestones (Milestone)
         VALUES (?)`,
         [Milestone]
     );
     const id = result.insertId;
+    await createProfileMilestones(ProfileID, id);
     return getMilestones(id);
 }
 
