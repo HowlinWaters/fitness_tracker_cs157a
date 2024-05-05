@@ -47,20 +47,13 @@
         document.getElementById("password").value = "";
 
         // Create user object
-        let userData = {
-          username: username,
-          password: password,
-        };
+        fetch('http://localhost:8080/users/'+username+'/'+password)
+        .then(response => response.json())
+        .then(data => console.log(data));
 
         let item = localStorage.getItem("currentUser");
         console.log(item);
         let data = JSON.parse(item);
-
-        if (data.Username == username && data.Password == password) {
-          alert("User data is in local storage.");
-        } else {
-          alert("Wrong Username or Password!!!");
-        }
       }
 
       function resetStorage() {
