@@ -1,4 +1,6 @@
 import express from "express";
+import cors from "cors";
+const app = express();
 import {
   getUsers,
   getUser,
@@ -29,12 +31,22 @@ import {
   getFavLocationWall, 
   addFavLocationWall, 
   updateFavLocationWall, 
-  deleteFavLocationWall
+  deleteFavLocationWall,
+  getMilestones,
+  createMilestone,
+  updateMilestone,
+  deleteMilestone,
+  getProfileMilestones,
+  createProfileMilestones,
+  getComment,
+  createComment,
+  updateComment
 } from "./database.js";
 
-const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended : false }));
 
 //For Users table
 
@@ -297,10 +309,64 @@ app.delete("/deletefavlocationwall", async (req, res) => {
 //end of favlocationwall
 
 //start of milestones
-//end fo milestones
+app.get("/milestones/:id", async (req, res) => {
+  const id = req.params.id;
+  const milestones = await getMilestones(id);
+  res.send(milestones);
+})
+
+app.post("/createmilestone", async (req, res) => {
+  const {Milestone, ProfileID} = req.body;
+  const milestone = await createMilestone(Milestone, ProfileID);
+  res.status(201).send(milestone);
+})
+
+app.put("/updatemilestones", async (req, res) => {
+  const {MilestoneID, Milestone} = req.body;
+  const milestone = await updateMilestone(MilestoneID, Milestone);
+  res.status(201).send(milestone);
+})
+
+app.delete("/deletemilestone", async (req, res) => {
+  const {MilestoneID} = req.body;
+  const milestone = await deleteMilestone(MilestoneID);
+  res.send(milestone);
+})
+//end of milestones
+
+// start of profilehasmilestones
+app.get("/profilemilestones/:id", async (req, res) => {
+  const id = req.params.id;
+  const profilemilestones = await getProfileMilestones(id);
+  res.send(profilemilestones);
+})
+
+app.post("/createprofilemilestones", async (req, res) => {
+  const {ProfileID, MilestoneID} = req.body;
+  const profilemilestones = await createProfileMilestones(ProfileID, MilestoneID);
+  res.status(201).send(profilemilestones);
+})
 
 //start of comment
+app.get("/comment/:id", async (req, res) => {
+  const id = req.params.id;
+  const comment = await getComment(id);
+  res.send(comment);
+})
+
+app.post("/createcomment", async (req, res) => {
+  const {ProfileID, Content, UserID, PublishDate} = req.body;
+  const comment = await createComment(ProfileID, Content, UserID, PublishDate);
+  res.status(201).send(comment);
+})
+
+app.put("/updatecomment", async (req, res) => {
+  const {ProfileID, Content, UserID, PublishDate} = req.body;
+  const comment = await updateComment(ProfileID, Content, UserID, PublishDate);
+  res.status(201).send(comment);
+})
 //end of comment
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");

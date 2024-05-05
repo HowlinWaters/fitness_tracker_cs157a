@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Goals</title>
+    <link rel="stylesheet" href="Styles/FitnessGoalPageStyle.css">
 </head>
 <body>
-    <h2>Fitness Goals</h2>
-    <p>This is the content of the Fitness Goals page.</p>
+    <header>
+        <h1>Fitness Goals</h1>
+    </header>
+    <main>
+        <button id="addFitnessGoal" style="margin-bottom: 5px;">Add Fitness Goal</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>FitnessGoal</th>
+                </tr>
+            </thead>
+            <tbody id="goalTableBody">
+                <!--Table rows will be added here.-->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        document.getElementById('addFitnessGoal').addEventListener('click', function() {
+            var fitnessGoal = prompt("What is your goal?");
+            if (fitnessGoal.length > 0) {
+                var tableBody = document.getElementById('goalTableBody');
+                var newRow = document.createElement('tr');
+                newRow.innerHTML = '<td>' + fitnessGoal + '</td>';
+                tableBody.appendChild(newRow);
+            } else {
+                alert('Error! Please write something in the text bar.');
+            }
+        });
+    </script>
 </body>
 </html>

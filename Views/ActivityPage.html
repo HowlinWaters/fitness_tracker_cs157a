@@ -18,6 +18,7 @@
                     <th>Activity</th>
                     <th>Duration (min)</th>
                     <th>Calories Burned</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody id="activityTableBody">
@@ -36,12 +37,20 @@
             if (name && duration && calories) {
                 var tableBody = document.getElementById('activityTableBody');
                 var newRow = document.createElement('tr');
-                newRow.innerHTML = '<td>' + name + '</td><td>' + duration + '</td><td>' + calories + '</td>';
+                newRow.innerHTML = `<td><input type='text' value='` + name + `'/></td>`+ `<td><input type='text' value='` + duration +`'/></td>` + 
+                `<td><input type='text' value='` + calories + `'/></td>` + 
+                `<td><input type='button' value='Delete' onclick='deleteRow(this)'/></td>`;
                 tableBody.appendChild(newRow);
             } else {
                 alert('Please enter valid values for all fields.');
             }
         });
+
+        // Row can be deleted once "Delete" button is pressed.
+        function deleteRow(button) {
+            var row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
     </script>
 </body>
 </html>

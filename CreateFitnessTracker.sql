@@ -60,17 +60,24 @@ CREATE TABLE Profile (
 );
 
 CREATE TABLE FavLocationWall (
-    FavLocationWallID INT PRIMARY KEY,
+    FavWallID INT AUTO_INCREMENT PRIMARY KEY,
+    ProfileID INT,
     LocationID INT,
-    FOREIGN KEY (FavLocationWallID) REFERENCES Profile(ProfileID) ON DELETE CASCADE,
+    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE, 
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
 );
 
 CREATE TABLE Milestones (
+    MilestoneID INT AUTO_INCREMENT PRIMARY KEY,
+    Milestone TEXT
+);
+
+CREATE TABLE ProfileHasMilestones (
     ProfileID INT,
-    Milestone TEXT,
-    PRIMARY KEY(ProfileID),
-    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
+    MilestoneID INT,
+    PRIMARY KEY(ProfileID, MilestoneID),
+    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE,
+    FOREIGN KEY (MilestoneID) REFERENCES MIlestones(MilestoneID) ON DELETE CASCADE
 );
 
 CREATE TABLE Comment (
@@ -78,7 +85,6 @@ CREATE TABLE Comment (
     Content TEXT,
     UserID INT,
     PublishDate DATE,
-    PRIMARY KEY (UserID, ProfileID),
     FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE, 
     FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE 
 );
@@ -109,5 +115,8 @@ VALUES ("asdf", 23, 32);
 
 INSERT INTO Profile (ProfileID, ProfileName)
 VALUES (1, "bibly")
+
+
+
 
 
