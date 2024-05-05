@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>User Information Form</title>
-    <link rel="stylesheet" href="Styles/AccountCreationStyle.css">
+    <link rel="stylesheet" href="Styles/AccountCreationStyle.css" />
   </head>
   <body>
     <!-- Form container -->
@@ -70,6 +70,7 @@
         let weight = document.getElementById("weight").value || null;
         let height = document.getElementById("height").value || null;
         let email = document.getElementById("email").value || null;
+        console.log(username);
 
         // reset the form
         document.getElementById("username").value = "";
@@ -81,20 +82,28 @@
         document.getElementById("height").value = "";
         document.getElementById("email").value = "";
 
-        // Create user object
-        let userData = {
-          username: username,
-          password: password,
-          fname: fname,
-          lname: lname,
-          dob: dob,
-          weight: weight,
-          height: height,
-          email: email,
-        };
+        console.log(username);
+
 
         // Store user data in local storage with key 'currentUser'
-        localStorage.setItem("currentUser", JSON.stringify(userData));
+        fetch("http://localhost:8080/createusers", {
+          headers: {
+            "Content-type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify({
+            Username: username,
+            Password: password,
+            FName: fname,
+            LName: lname,
+            DOB: dob,
+            Weight: weight,
+            Height: height,
+            Email: email,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data));
 
         // Alert to confirm data has been saved
         alert("User data saved to local storage.");
