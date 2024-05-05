@@ -27,7 +27,7 @@
     <script>
         document.getElementById('addLocation').addEventListener('click', function() {
             var location = prompt("Enter a location.");
-            if (location.length > 0) {
+            if (location) {
                 var tableBody = document.getElementById('locationTableBody');
                 var newRow = document.createElement('tr');
                 newRow.innerHTML = '<td>' + location + '</td>';

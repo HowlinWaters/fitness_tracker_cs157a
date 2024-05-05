@@ -23,13 +23,87 @@
             </thead>
             <tbody id="activityTableBody">
                 <!-- Table rows will be dynamically added here -->
+                <tr></tr>
             </tbody>
         </table>
     </main>
 
     <script>
+        // Fetch the database from SQL server.
+        document.addEventListener('DOMContentLoaded', function(id) {
+            var user;
+            var activities;
+
+            // var table = getDatabaseTable();
+
+            // console.log(table);
+
+            // for (var i = 0; table.rows.length; ++i) {
+            //     fetch('http://localhost:8080/users/1').then(function (res) {
+            //     if (res.ok) {
+            //         return res.json();
+            //     } else {
+            //         return Promise.reject(res);
+            //     }
+            //     }).then(function (data) {
+            //         user = data;
+            //         return fetch('http://localhost:8080/tracksactivities/' + data.UserID);
+            //     }).then(function (res) {
+            //         if (res.ok) {
+            //             return res.json();
+            //         } else {
+            //             return Promise.reject(res);
+            //         }
+            //     }).then(function (data) {
+            //         activity = data;
+            //         return fetch('http://localhost:8080/activities/' + activity.ActivityID)
+            //     }).then(function (res) {
+            //         if (res.ok) {
+            //             return res.json();
+            //         } else {
+            //             return Promise.reject(res);
+            //         }
+            //     }).then(data => loadTable(data['data']));
+            // }
+            
+            fetch('http://localhost:8080/users/1').then(function (res) {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            }).then(function (data) {
+                user = data;
+                return fetch('http://localhost:8080/tracksactivities/' + data.UserID);
+            }).then(function (res) {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            }).then(function (data) {
+                activities = data;
+                return fetch('http://localhost:8080/activities/' + activities.forEach(activity => { activity.ActivityID; }));
+            }).then(function (res) {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(res);
+                }
+            }).then(data => loadTable(data)); 
+        });
+
+        document.querySelector('table tbody').addEventListener('click', function(event) {
+            if (event.target.className === "delete-btn") {
+                deleteRow(event.target.dataset.id);
+            }
+            // if (event.target.className === "edit-btn") {
+            //     editRow(event.target.dataset.id);
+            // }
+        });
+
         // JavaScript to handle adding entries to the table
-        document.getElementById('addEntryButton').addEventListener('click', function() {
+        document.getElementById('addEntryButton').addEventListener('click', function(data) {
             var name = prompt('Enter activity:');
             var duration = prompt('Enter duration (minutes):');
             var calories = prompt('Enter calories burned:');
@@ -39,7 +113,24 @@
                 var newRow = document.createElement('tr');
                 newRow.innerHTML = `<td><input type='text' value='` + name + `'/></td>`+ `<td><input type='text' value='` + duration +`'/></td>` + 
                 `<td><input type='text' value='` + calories + `'/></td>` + 
-                `<td><input type='button' value='Delete' onclick='deleteRow(this)'/></td>`;
+                `<td><input type='button' class="delete-btn" value='Delete' onclick='deleteRow(this)'/></td>`;
+                fetch('http://localhost:8080/createactivities', { 
+                    method : 'POST',
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    cache : "no-cache",
+                    body : JSON.stringify(
+                        {
+                            ActivityName : name,
+                            DurationTime : duration,
+                            TotalCaloriesBurnt : calories
+                        }
+                    )
+                })
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(err => console.log(err));
                 tableBody.appendChild(newRow);
             } else {
                 alert('Please enter valid values for all fields.');
@@ -51,6 +142,41 @@
             var row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
         }
+
+        // Load the database table into HTML file.
+        function loadTable(data) {
+            console.log("Loading table from database...");
+            console.log(data);
+
+            let table = document.querySelector('table tbody');
+
+            let tableHTML = "";
+
+            // data.foreach(function (ActivityID, ActivityName, DurationTime, TotalCaloriesBurnt) {
+            //     tableHTML += "<tr>";
+            //     tableHTML += `<td>"${ActivityName}"</td>`;
+            //     tableHTML += `<td>"${DurationTime}"</td>`;
+            //     tableHTML += `<td>"${TotalCaloriesBurnt}"</td>`;
+            //     tableHTML += `<td><button class="delete-btn" data-id=${ActivityID}>Delete</td>`
+            //     // tableHTML += `<td><button class="edit-btn" data-id=${id}>Edit</td>`
+            //     tableHTML += "</tr>";
+            // });
+
+            tableHTML += "<tr>";
+            tableHTML += `<td>`+data.ActivityName+`</td>`;
+            tableHTML += `<td>`+data.DurationTime+`</td>`;
+            tableHTML += `<td>`+data.TotalCaloriesBurnt+`</td>`;
+            tableHTML += `<td><button class="delete-btn" data-id=`+data.ActivityID+`>Delete</td>`
+            // tableHTML += `<td><button class="edit-btn" data-id=${id}>Edit</td>`
+            tableHTML += "</tr>";
+
+            table.innerHTML = tableHTML;
+        }
+
+        // function getDatabaseTable() {
+        //     return fetch('http://localhost:8080/tracksactivities/1').then(res => res.json()).then(data => { table = data['data']} )
+        //     .then(data => resolve(data));
+        // }
     </script>
 </body>
 </html>
