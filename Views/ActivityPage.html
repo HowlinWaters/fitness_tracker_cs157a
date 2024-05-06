@@ -19,6 +19,7 @@
                     <th>Duration (min)</th>
                     <th>Calories Burned</th>
                     <th>Delete</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody id="activityTableBody">
@@ -30,90 +31,73 @@
 
     <script>
         // Fetch the database from SQL server.
-        document.addEventListener('DOMContentLoaded', function(id) {
+        document.addEventListener('DOMContentLoaded', function(id) { 
             var user;
             var activities;
-
-            // var table = getDatabaseTable();
-
-            // console.log(table);
-
-            // for (var i = 0; table.rows.length; ++i) {
-            //     fetch('http://localhost:8080/users/1').then(function (res) {
-            //     if (res.ok) {
-            //         return res.json();
-            //     } else {
-            //         return Promise.reject(res);
-            //     }
-            //     }).then(function (data) {
-            //         user = data;
-            //         return fetch('http://localhost:8080/tracksactivities/' + data.UserID);
-            //     }).then(function (res) {
-            //         if (res.ok) {
-            //             return res.json();
-            //         } else {
-            //             return Promise.reject(res);
-            //         }
-            //     }).then(function (data) {
-            //         activity = data;
-            //         return fetch('http://localhost:8080/activities/' + activity.ActivityID)
-            //     }).then(function (res) {
-            //         if (res.ok) {
-            //             return res.json();
-            //         } else {
-            //             return Promise.reject(res);
-            //         }
-            //     }).then(data => loadTable(data['data']));
-            // }
             
-            fetch('http://localhost:8080/users/1').then(function (res) {
-                if (res.ok) {
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
+            // Nested fetches (ugh!).
+            fetch('http://localhost:8080/users/1', {
+                headers: {
+                    "Content-Type": "application/json"
                 }
-            }).then(function (data) {
-                user = data;
-                return fetch('http://localhost:8080/tracksactivities/' + data.UserID);
-            }).then(function (res) {
-                if (res.ok) {
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
+            })
+            .then(function (userRes) {
+                if (!userRes.ok) {
+                    throw new Error('Failed to fetch user');
                 }
-            }).then(function (data) {
-                activities = data;
-                return fetch('http://localhost:8080/activities/' + activities.forEach(activity => { activity.ActivityID; }));
-            }).then(function (res) {
-                if (res.ok) {
-                    return res.json();
-                } else {
-                    return Promise.reject(res);
+                return userRes.json();
+            })
+            .then(function (userData) {
+                user = userData;
+                return fetch(`http://localhost:8080/tracksactivities/${userData.UserID}`);
+            })
+            .then(function (activitiesRes) {
+                if (!activitiesRes.ok) {
+                    throw new Error('Failed to fetch activities');
                 }
-            }).then(data => loadTable(data)); 
+                return activitiesRes.json();
+            })
+            .then(function (activitiesData) { // This requires some sort of iteration (map) to go through all the data.
+                const activityIDs = activitiesData.map(activity => activity.ActivityID);
+                const activityFetchPromises = activityIDs.map(activityID => fetch(`http://localhost:8080/activities/${activityID}`,
+                    {
+                        headers : {
+                            "Content-Type" : "application/json"
+                        }
+                    }
+                ));
+                
+                return Promise.all(activityFetchPromises);
+            })
+            .then(function (activityResponses) {
+                const activityJSONPromises = activityResponses.map(response => response.json());
+                
+                return Promise.all(activityJSONPromises);
+            })
+            .then(function (activityJSONs) {
+                console.log(activityJSONs);
+                loadTable(activityJSONs);
+            })
+            .catch(function (error) {
+                console.error('Error:', error);
+            });
         });
 
-        document.querySelector('table tbody').addEventListener('click', function(event) {
-            if (event.target.className === "delete-btn") {
-                deleteRow(event.target.dataset.id);
-            }
-            // if (event.target.className === "edit-btn") {
-            //     editRow(event.target.dataset.id);
-            // }
-        });
+        const addButton = document.querySelector('#addEntryButton');
 
         // JavaScript to handle adding entries to the table
-        document.getElementById('addEntryButton').addEventListener('click', function(data) {
+        addButton.onclick = function (data) {
             var name = prompt('Enter activity:');
-            var duration = prompt('Enter duration (minutes):');
+            var duration = prompt('Enter duration in minutes:');
             var calories = prompt('Enter calories burned:');
             
             if (name && duration && calories) {
                 var tableBody = document.getElementById('activityTableBody');
                 var newRow = document.createElement('tr');
-                newRow.innerHTML = `<td><input type='text' value='` + name + `'/></td>`+ `<td><input type='text' value='` + duration +`'/></td>` + 
-                `<td><input type='text' value='` + calories + `'/></td>` + 
-                `<td><input type='button' class="delete-btn" value='Delete' onclick='deleteRow(this)'/></td>`;
+                newRow.innerHTML = `<td id="name-col">`+ name +`</td>`+ `<td id="dur-col">` + duration +`</td>` + 
+                `<td id="cal-col">` + calories + `</td>` + 
+                `<td><button class="delete-btn" onclick="deleteRowById(this.parentNode.parentNode.dataset.id)">Delete</td>` +
+                `<td><button class="edit-btn">Edit</td>`;
                 fetch('http://localhost:8080/createactivities', { 
                     method : 'POST',
                     headers : {
@@ -135,12 +119,74 @@
             } else {
                 alert('Please enter valid values for all fields.');
             }
-        });
+        };
+
+        document.querySelector('table tbody').addEventListener('click', function(event) {
+            if (event.target.className === "delete-btn") {
+                deleteRowById(event.target.dataset.id);
+            }
+            if (event.target.className === "edit-btn") {
+                editRowById(event.target.dataset.id);
+            }
+        })
 
         // Row can be deleted once "Delete" button is pressed.
-        function deleteRow(button) {
-            var row = button.parentNode.parentNode;
-            row.parentNode.removeChild(row);
+        function deleteRowById(id) {
+            fetch(`http://localhost:8080/deleteactivities/${id}`, {
+                method: 'DELETE'
+            })
+            .then(function (res) {
+                if (!res.ok) throw new Error("Failed to delete row.");
+                location.reload();
+            })
+            .catch(error => console.error("Failed to delete row."));
+        }
+
+        // Row can have its values edited once "Edit" button is pressed.
+        function editRowById(id) {
+            var name = prompt('Enter activity:');
+            var duration = prompt('Enter duration in minutes:');
+            var calories = prompt('Enter calories burned:');
+
+            if (name && duration && calories) {
+                fetch(`http://localhost:8080/updateactivities/`, {
+                    method : 'PUT',
+                    headers : {
+                        "Content-Type" : "application/json"
+                    },
+                    body : JSON.stringify( 
+                    {
+                        ActivityName : name,
+                        DurationTime : duration,
+                        TotalCaloriesBurnt : calories,
+                        ActivityID : id
+                    }),
+                    cache : 'no-cache'
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error("Failed to update row.");
+                    return res.json();
+                })
+                .then(data => {
+                    console.log("Row updated.", data);
+                    const row = document.querySelector(`tr[data-id="${id}"]`);
+                    if (row) {
+                        row.querySelector("#name-col").textContent = name;
+                        row.querySelector("#dur-col").textContent = duration;
+                        row.querySelector("cal-col").textContent = calories;
+
+                        row.querySelector("#name-col").setAttribute("data-name", name);
+                        row.querySelector("#dur-col").setAttribute("data-duration", duration);
+                        row.querySelector("#cal-col").setAttribute("data-calories", calories);
+                    }
+                })
+                .then(data => {
+                    location.reload();
+                })
+                .catch(error => console.error("Failed to update row."));
+            } else {
+                alert("Please enter valid values for all fields.");
+            }
         }
 
         // Load the database table into HTML file.
@@ -152,31 +198,18 @@
 
             let tableHTML = "";
 
-            // data.foreach(function (ActivityID, ActivityName, DurationTime, TotalCaloriesBurnt) {
-            //     tableHTML += "<tr>";
-            //     tableHTML += `<td>"${ActivityName}"</td>`;
-            //     tableHTML += `<td>"${DurationTime}"</td>`;
-            //     tableHTML += `<td>"${TotalCaloriesBurnt}"</td>`;
-            //     tableHTML += `<td><button class="delete-btn" data-id=${ActivityID}>Delete</td>`
-            //     // tableHTML += `<td><button class="edit-btn" data-id=${id}>Edit</td>`
-            //     tableHTML += "</tr>";
-            // });
-
-            tableHTML += "<tr>";
-            tableHTML += `<td>`+data.ActivityName+`</td>`;
-            tableHTML += `<td>`+data.DurationTime+`</td>`;
-            tableHTML += `<td>`+data.TotalCaloriesBurnt+`</td>`;
-            tableHTML += `<td><button class="delete-btn" data-id=`+data.ActivityID+`>Delete</td>`
-            // tableHTML += `<td><button class="edit-btn" data-id=${id}>Edit</td>`
-            tableHTML += "</tr>";
+            data.forEach(function ( {ActivityID, ActivityName, DurationTime, TotalCaloriesBurnt} ) {
+                tableHTML += "<tr>";
+                tableHTML += `<td>"${ActivityName}"</td>`;
+                tableHTML += `<td>"${DurationTime}"</td>`;
+                tableHTML += `<td>"${TotalCaloriesBurnt}"</td>`;
+                tableHTML += `<td><button class="delete-btn" onclick="deleteRowById(this.parentNode.parentNode.dataset.id)" data-id=${ActivityID}/>Delete</td>`
+                tableHTML += `<td><button class="edit-btn" data-id=${ActivityID}>Edit</td>`
+                tableHTML += "</tr>";
+            });
 
             table.innerHTML = tableHTML;
         }
-
-        // function getDatabaseTable() {
-        //     return fetch('http://localhost:8080/tracksactivities/1').then(res => res.json()).then(data => { table = data['data']} )
-        //     .then(data => resolve(data));
-        // }
     </script>
 </body>
 </html>
