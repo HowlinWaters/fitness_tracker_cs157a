@@ -220,6 +220,8 @@ export async function createActivities(
     [ActivityName, DurationTime, TotalCaloriesBurnt]
   );
   const id = result.insertId;
+  const userID = 1; // Temporary constant user ID
+  await createTracksActivities(userID, id); // Current user ID (possibly global) must be used for this function call
   return getActivities(id);
 }
 
@@ -255,7 +257,7 @@ export async function getTracksActivities(id) {
     `SELECT * FROM TracksActivities WHERE UserID = ?`,
     [id]
   );
-  return result[0];
+  return result;
 }
 
 export async function createTracksActivities(UserID, ActivityID) {
