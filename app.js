@@ -1,4 +1,6 @@
 import express from "express";
+import cors from "cors";
+const app = express();
 import {
   getUsers,
   getUser,
@@ -41,9 +43,10 @@ import {
   updateComment
 } from "./database.js";
 
-const app = express();
 
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended : false }));
 
 //For Users table
 

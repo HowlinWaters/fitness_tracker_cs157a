@@ -47,16 +47,13 @@
         document.getElementById("password").value = "";
 
         // Create user object
-        let userData = {
-          username: username,
-          password: password,
-        };
+        fetch('http://localhost:8080/users/'+username+'/'+password)
+        .then(response => response.json())
+        .then(data => console.log(data));
 
-        // Store user data in local storage with key 'currentUser'
-        localStorage.setItem("currentUser", JSON.stringify(userData));
-
-        // Alert to confirm data has been saved
-        alert("User data saved to local storage.");
+        let item = localStorage.getItem("currentUser");
+        console.log(item);
+        let data = JSON.parse(item);
       }
 
       function resetStorage() {
