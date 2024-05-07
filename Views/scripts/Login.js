@@ -13,7 +13,6 @@ function saveUserData() {
     .then((response) => response.json())
     .then((data) => {
       GlobalUserID = data.UserID;
-      console.log(GlobalUserID);
-      return GlobalUserID;
+      sessionStorage.setItem("GlobalUserID", GlobalUserID);
     });
 }

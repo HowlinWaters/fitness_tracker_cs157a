@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function (id) {
 
   // Chained fetches (ugh!).
   // First, fetch a request to get one user based on their user ID (globalized).
-  fetch("http://localhost:8080/users/1", {
+  fetch("http://localhost:8080/users/"+sessionStorage.getItem("GlobalUserID"), {
     headers: {
       "Content-Type": "application/json",
     },
