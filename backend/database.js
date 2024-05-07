@@ -276,7 +276,7 @@ export async function getActivityLocation(id) {
     `SELECT * FROM ActivityLocation WHERE UserID = ?`,
     [id]
   );
-  return result[0];
+  return result;
 }
 
 export async function createActivityLocation(UserID, LocationID) {

@@ -178,7 +178,7 @@ function editRowById(id) {
         if (row) {
           row.querySelector("#name-col").textContent = name;
           row.querySelector("#dur-col").textContent = duration;
-          row.querySelector("cal-col").textContent = calories;
+          row.querySelector("#cal-col").textContent = calories;
 
           row.querySelector("#name-col").setAttribute("data-name", name);
           row.querySelector("#dur-col").setAttribute("data-duration", duration);
@@ -217,7 +217,7 @@ function loadTable(data) {
     tableHTML += `<td id="name-col">"${ActivityName}"</td>`;
     tableHTML += `<td id="dur-col">"${DurationTime}"</td>`;
     tableHTML += `<td id="cal-col">"${TotalCaloriesBurnt}"</td>`;
-    tableHTML += `<td><button class="delete-btn" data-id=${ActivityID}/>Delete</td>`;
+    tableHTML += `<td><button class="delete-btn" data-id=${ActivityID}>Delete</td>`;
     tableHTML += `<td><button class="edit-btn" data-id=${ActivityID}>Edit</td>`;
     tableHTML += "</tr>";
   });

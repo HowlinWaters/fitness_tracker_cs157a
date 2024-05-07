@@ -86,7 +86,6 @@ CREATE INDEX FitnessGoalIndex USING BTREE ON FitnessGoal(FitnessGoalID);
 CREATE INDEX LocationIndex USING BTREE ON Location(LocationID);
 CREATE INDEX ActivitiesIndex USING BTREE ON Activities(ActivityID);
 CREATE INDEX ProfileIndex USING BTREE ON Profile(ProfileID);
-CREATE INDEX FavLocationIndex USING BTREE ON FavLocationWall(FavWallID);
 CREATE INDEX MilestonesIndex USING BTREE ON Milestones(MilestoneID);
 
 -- example
