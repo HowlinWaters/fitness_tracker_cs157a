@@ -9,7 +9,6 @@ function saveUserData() {
   let weight = document.getElementById("weight").value || null;
   let height = document.getElementById("height").value || null;
   let email = document.getElementById("email").value || null;
-  console.log(username);
 
   // reset the form
   document.getElementById("username").value = "";
@@ -20,8 +19,6 @@ function saveUserData() {
   document.getElementById("weight").value = "";
   document.getElementById("height").value = "";
   document.getElementById("email").value = "";
-
-  console.log(username);
 
   // Store user data in local storage with key 'currentUser'
   fetch("http://localhost:8080/createusers", {
@@ -42,12 +39,4 @@ function saveUserData() {
   })
     .then((response) => response.json())
     .then((data) => console.log(data));
-
-  // Alert to confirm data has been saved
-  alert("User data saved to local storage.");
-}
-
-function resetStorage() {
-  event.preventDefault();
-  localStorage.removeItem("currentUser");
 }
