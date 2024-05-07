@@ -273,19 +273,19 @@ export async function createTracksActivities(UserID, ActivityID) {
 //start of activitylocation
 export async function getActivityLocation(id) {
   const [result] = await dbconnection.query(
-    `SELECT * FROM ActivityLocation WHERE ActivityID = ?`,
+    `SELECT * FROM ActivityLocation WHERE UserID = ?`,
     [id]
   );
   return result[0];
 }
 
-export async function createActivityLocation(ActivityID, LocationID) {
+export async function createActivityLocation(UserID, LocationID) {
   const [result] = await dbconnection.query(
-    `INSERT INTO ActivityLocation (ActivityID, LocationID)
+    `INSERT INTO ActivityLocation (UserID, LocationID)
     VALUES (?, ?)`,
-    [ActivityID, LocationID]
+    [UserID, LocationID]
   );
-  return getActivityLocation(ActivityID);
+  return getActivityLocation(UserID);
 }
 //end of activitylocation
 
@@ -319,45 +319,7 @@ export async function updateProfile(ProfileName, UserID) {
 }
 //end of profile
 
-//start of favlocationwall
-export async function getFavLocationWall(id) {
-  const [result] = await dbconnection.query(
-    `SELECT * FROM FavLocationWall WHERE FavLocationWallID = ?`,
-    [id]
-  );
-  return result[0];
-}
 
-export async function addFavLocationWall(FavLocationWallID, LocationID) {
-  const [result] = await dbconnection.query(
-    `INSERT INTO FavLocationWall (FavLocationWallID, LocationID)
-    VALUES (?, ?)`,
-    [FavLocationWallID, LocationID]
-  );
-  const id = result.insertId;
-  return getFavLocationWall(FavLocationWallID);
-}
-
-export async function updateFavLocationWall(FavLocationWallID, LocationID) {
-  const [result] = await dbconnection.query(
-    `
-    UPDATE FavLocationWall 
-    SET LocationID = ?
-    WHERE FavLocationWallID = ?`,
-    [LocationID, FavLocationWallID]
-  );
-  return getFavLocationWall(FavLocationWallID);
-}
-
-export async function deleteFavLocationWall(FavLocationWallID, LocationID) {
-  const [result] = await dbconnection.query(
-    `
-    DELETE FROM FavLocationWall WHERE LocationID = ? AND FavLocationWallID = ?`,
-    [LocationID, FavLocationWallID]
-  );
-  return result.affectedRows;
-}
-//end of favlocationwall
 
 //start of milestones
 export async function getMilestones(id) {

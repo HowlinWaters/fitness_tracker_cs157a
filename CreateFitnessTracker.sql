@@ -46,10 +46,10 @@ CREATE TABLE TracksActivities (
 );
 
 CREATE TABLE ActivityLocation (
-    ActivityID INT,
+    UserID INT,
     LocationID INT,
-    PRIMARY KEY (ActivityID, LocationID),
-    FOREIGN KEY (ActivityID) REFERENCES Activities(ActivityID) ON DELETE CASCADE, 
+    PRIMARY KEY (UserID, LocationID),
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE, 
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
 );
 
@@ -57,14 +57,6 @@ CREATE TABLE Profile (
     ProfileID INT,
     ProfileName VARCHAR(255),
     FOREIGN KEY (ProfileID) REFERENCES User(UserID) ON DELETE CASCADE
-);
-
-CREATE TABLE FavLocationWall (
-    FavWallID INT AUTO_INCREMENT PRIMARY KEY,
-    ProfileID INT,
-    LocationID INT,
-    FOREIGN KEY (ProfileID) REFERENCES Profile(ProfileID) ON DELETE CASCADE, 
-    FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE CASCADE
 );
 
 CREATE TABLE Milestones (

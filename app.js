@@ -28,10 +28,6 @@ import {
   getProfile,
   createProfile,
   updateProfile,
-  getFavLocationWall, 
-  addFavLocationWall, 
-  updateFavLocationWall, 
-  deleteFavLocationWall,
   getMilestones,
   createMilestone,
   updateMilestone,
@@ -256,8 +252,8 @@ app.get("/activitylocation/:id", async (req, res) => {
 });
 
 app.post("/createactivitylocation", async (req, res) => {
-  const { ActivityID, LocationID } = req.body;
-  const activitylocation = await createActivityLocation(ActivityID, LocationID);
+  const { UserID, LocationID } = req.body;
+  const activitylocation = await createActivityLocation(UserID, LocationID);
   res.status(201).send(activitylocation);
 });
 //end of activitylocation
@@ -281,32 +277,6 @@ app.put("/updateprofile", async (req, res) => {
   res.status(201).send(profile);
 });
 //end of profile
-
-//start of favlocationwall
-app.get("/favlocationwall/:id", async (req, res) => {
-  const id = req.params.id;
-  const activity = await getFavLocationWall(id);
-  res.send(activity);
-});
-
-app.post("/createfavlocationwall", async (req, res) => {
-  const { FavLocationWallID, LocationID } = req.body;
-  const activity = await addFavLocationWall(FavLocationWallID, LocationID);
-  res.status(201).send(activity);
-});
-
-app.put("/updatefavlocationwall", async (req, res) => {
-  const { FavLocationWallID, LocationID } = req.body;
-  const activity = await updateFavLocationWall(FavLocationWallID, LocationID);
-  res.status(201).send(activity);
-});
-
-app.delete("/deletefavlocationwall", async (req, res) => {
-  const { FavLocationWallID, LocationID } = req.body;
-  const activity = await deleteFavLocationWall(FavLocationWallID, LocationID);
-  res.send(activity);
-});
-//end of favlocationwall
 
 //start of milestones
 app.get("/milestones/:id", async (req, res) => {
