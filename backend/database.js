@@ -107,7 +107,7 @@ export async function getFitnessGoal(id) {
     `SELECT * FROM FitnessGoal WHERE FitnessGoalID = ?`,
     [id]
   );
-  return result[0];
+  return result;
 }
 
 export async function createFitnessGoal(
@@ -169,6 +169,8 @@ export async function createLocation(Address, City, State, BuildingName) {
     [Address, City, State, BuildingName]
   );
   const id = result.insertId;
+  const userID = 1; // Temporary constant for user ID.
+  await createActivityLocation(userID, id);
   return getLocation(id);
 }
 
@@ -220,7 +222,7 @@ export async function createActivities(
     [ActivityName, DurationTime, TotalCaloriesBurnt]
   );
   const id = result.insertId;
-  const userID = 1; // Temporary constant user ID
+  const userID = 1;
   await createTracksActivities(userID, id); // Current user ID (possibly global) must be used for this function call
   return getActivities(id);
 }
