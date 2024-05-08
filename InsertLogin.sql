@@ -290,7 +290,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('padberg.athena', '57c9e4
 INSERT INTO Login (Username, Password, UserID) VALUES ('cdare', '8ca0c648a4fe64ed5c7045cf8fc6e13dd377f926', 290);
 INSERT INTO Login (Username, Password, UserID) VALUES ('napoleon.mayer', 'd276a0e9ed40d997f64288bfa313b3e91b56ed19', 291);
 INSERT INTO Login (Username, Password, UserID) VALUES ('natalie24', 'be6eb449bc709858cc338774ee1d3c3640062e06', 292);
-INSERT INTO Login (Username, Password, UserID) VALUES ('o\'connell.dee', '22fb3bf1fe8c1fed2ef4d2f46f9d9bdb210b2b07', 293);
+INSERT INTO Login (Username, Password, UserID) VALUES ('connell.dee', '22fb3bf1fe8c1fed2ef4d2f46f9d9bdb210b2b07', 293);
 INSERT INTO Login (Username, Password, UserID) VALUES ('lkohler', '74687d730def0837141c9d3b1a5c2f6ea2727b3b', 294);
 INSERT INTO Login (Username, Password, UserID) VALUES ('shayes', '658aeb555aa04d8bbf4a63d2354a787c37779c5c', 295);
 INSERT INTO Login (Username, Password, UserID) VALUES ('jessika00', 'c31c95fb1df180be0ea28141d6b7388d608a539d', 296);
@@ -355,7 +355,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('kjones', 'cb3354532f5468
 INSERT INTO Login (Username, Password, UserID) VALUES ('rhett.kuhic', 'edfe564c2d973131720396ad29c378b0244b8f84', 355);
 INSERT INTO Login (Username, Password, UserID) VALUES ('darryl50', 'c68a812d187b52cb6bc94cc3ac5702c6dd60ff05', 356);
 INSERT INTO Login (Username, Password, UserID) VALUES ('orn.jace', 'b671f85206b24ab73e0c78974a3ac3bbbb9dafb5', 357);
-INSERT INTO Login (Username, Password, UserID) VALUES ('d\'amore.rylan', '8c1a9e1ca9baeefcb98355549b7da9993594dcb7', 358);
+INSERT INTO Login (Username, Password, UserID) VALUES ('amore.rylan', '8c1a9e1ca9baeefcb98355549b7da9993594dcb7', 358);
 INSERT INTO Login (Username, Password, UserID) VALUES ('molly.rutherford', 'fd18441cdf870572d9ceb35bd4b96f22a26e76c2', 359);
 INSERT INTO Login (Username, Password, UserID) VALUES ('carroll.katrina', 'e65a03c807959e3e77f4a71369390be8b71a17cb', 360);
 INSERT INTO Login (Username, Password, UserID) VALUES ('bernhard.rosario', 'df08ff65a02f00ec806c307f29979604bcef8e56', 361);
@@ -429,7 +429,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('justen95', '8dbbb2e12458
 INSERT INTO Login (Username, Password, UserID) VALUES ('yledner', 'dd6f0e1673b425cea1fb415213aebd1ffe4ee52b', 429);
 INSERT INTO Login (Username, Password, UserID) VALUES ('edna.ondricka', '8cfc3005c967f8572186fa1946762750693cc107', 430);
 INSERT INTO Login (Username, Password, UserID) VALUES ('dturner', '1a3960bf72cb7929e3481ab5733cb351e74c38ca', 431);
-INSERT INTO Login (Username, Password, UserID) VALUES ('o\'conner.ada', '49654f815fd54e7f79cbd11afb904be2003815da', 432);
+INSERT INTO Login (Username, Password, UserID) VALUES ('conner.ada', '49654f815fd54e7f79cbd11afb904be2003815da', 432);
 INSERT INTO Login (Username, Password, UserID) VALUES ('marvin.gabriel', '13c1d7fe86b454086cb437f51c406ed8f6b27ed4', 433);
 INSERT INTO Login (Username, Password, UserID) VALUES ('cecelia59', '9e2b52f2c4305d7ad2c76e0fcde159f40705fa93', 434);
 INSERT INTO Login (Username, Password, UserID) VALUES ('howe.gabriella', '9211e6e2b63c6e4e6f0bdfb98cb8bc55376c2e64', 435);
@@ -506,7 +506,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('gerlach.roman', '3b7eca9
 INSERT INTO Login (Username, Password, UserID) VALUES ('annabelle.rutherford', '47d957b52b0a7713f57c649b8144ddfe98637da5', 506);
 INSERT INTO Login (Username, Password, UserID) VALUES ('hhickle', '8136163e71b8f6e1b52ebb224b39f9d517dc33e2', 507);
 INSERT INTO Login (Username, Password, UserID) VALUES ('hyatt.brannon', 'dcb68d0682e1e41a34eadf45140a42bd31db0731', 508);
-INSERT INTO Login (Username, Password, UserID) VALUES ('d\'amore.emilia', 'db32a9e9d98ed2dc26146af976e3d6cf8eae0f46', 509);
+INSERT INTO Login (Username, Password, UserID) VALUES ('amore.emilia', 'db32a9e9d98ed2dc26146af976e3d6cf8eae0f46', 509);
 INSERT INTO Login (Username, Password, UserID) VALUES ('allene.rice', 'b9329af9789e835ee18a51988bb919ed64603a23', 510);
 INSERT INTO Login (Username, Password, UserID) VALUES ('jaclyn.leannon', '0161413692937b359e44f23bb2929f7ce9e5ba1f', 511);
 INSERT INTO Login (Username, Password, UserID) VALUES ('janet.friesen', '9c3d6d2c926ea4afd84c23151aa1fb0674788820', 512);
@@ -573,7 +573,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('timmothy71', '79f916c749
 INSERT INTO Login (Username, Password, UserID) VALUES ('kylee68', 'ae37e0c0ef86d0aba1f131970f52df87d140e913', 573);
 INSERT INTO Login (Username, Password, UserID) VALUES ('raynor.jocelyn', '5a60bbaaf7b1f8cef0b1ecb7958896ebb3cecafc', 574);
 INSERT INTO Login (Username, Password, UserID) VALUES ('gerry15', '440aa8b808ac4d6f9da1abb35b2e7be8624a0ebb', 575);
-INSERT INTO Login (Username, Password, UserID) VALUES ('o\'conner.noel', '8694b1a0e7c30ba853d424e1e41ad452ff15f7c7', 576);
+INSERT INTO Login (Username, Password, UserID) VALUES ('conner.noel', '8694b1a0e7c30ba853d424e1e41ad452ff15f7c7', 576);
 INSERT INTO Login (Username, Password, UserID) VALUES ('kim.green', 'e6a3bae7e93d6f98132338981965b0b81f000893', 577);
 INSERT INTO Login (Username, Password, UserID) VALUES ('tromp.alessandra', 'ea6c63e79c71d13d4e6fa4b420c6932f9cf588ff', 578);
 INSERT INTO Login (Username, Password, UserID) VALUES ('pasquale53', '5dbfb5e6110ff67b53f630ce93a92b02e56fc15e', 579);
@@ -603,7 +603,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('arden80', '08fd8890ad554
 INSERT INTO Login (Username, Password, UserID) VALUES ('gbayer', '2472bdb5275192ba0086d67ece5118944de822eb', 603);
 INSERT INTO Login (Username, Password, UserID) VALUES ('jerde.trace', 'fb0e9dbe096f14e900314302bb6104c60f2cb09c', 604);
 INSERT INTO Login (Username, Password, UserID) VALUES ('flarson', '280fa04675fb49ef26316e580a191bffc7027424', 605);
-INSERT INTO Login (Username, Password, UserID) VALUES ('d\'amore.tatyana', '3de77b8d6002423281949f3859d4bfd8a8863d54', 606);
+INSERT INTO Login (Username, Password, UserID) VALUES ('amore.tatyana', '3de77b8d6002423281949f3859d4bfd8a8863d54', 606);
 INSERT INTO Login (Username, Password, UserID) VALUES ('vonrueden.elias', '916300f289a318e3dd5ff0e0d83ccd1584f57520', 607);
 INSERT INTO Login (Username, Password, UserID) VALUES ('lillian84', 'a44b3336826f461a4b24f783cabddd3dd8fad7d0', 608);
 INSERT INTO Login (Username, Password, UserID) VALUES ('sorn', '9e7f2720c22c4b4aff6a58ad89a15a3d441d0c82', 609);
@@ -882,7 +882,7 @@ INSERT INTO Login (Username, Password, UserID) VALUES ('ursula.abshire', '337e5f
 INSERT INTO Login (Username, Password, UserID) VALUES ('zwehner', '8f5743397aecb3f6dade029dda38463375498c0d', 882);
 INSERT INTO Login (Username, Password, UserID) VALUES ('stewart34', '86e3652200a6baeb02acc4a61ed9f7870f2b71b3', 883);
 INSERT INTO Login (Username, Password, UserID) VALUES ('strosin.kelly', '83c4b8ffca4e1e597d260fea41043996e0413b65', 884);
-INSERT INTO Login (Username, Password, UserID) VALUES ('gerson.o\'hara', '36d5dc17d8197cb1a646ce30e73b166a763ac981', 885);
+INSERT INTO Login (Username, Password, UserID) VALUES ('gerson.hara', '36d5dc17d8197cb1a646ce30e73b166a763ac981', 885);
 INSERT INTO Login (Username, Password, UserID) VALUES ('brandyn69', 'd7f3128d405cb112115ebd4b665e9aa445910c21', 886);
 INSERT INTO Login (Username, Password, UserID) VALUES ('jglover', 'd71ddec2f432257de284f633dccc2ad17d50aa11', 887);
 INSERT INTO Login (Username, Password, UserID) VALUES ('fweber', '3033e9100f0dace81dd3d81557270337067cff9d', 888);

@@ -1,4 +1,4 @@
-INSERT INTO Comment VALUES
+INSERT INTO Comment (ProfileID, Content, UserID, PublishDate) VALUES
 (1,'Earum laboriosam natus expedita molestiae ducimus dicta exercitationem. Inventore et voluptatibus explicabo sint dolorem. Libero magnam eligendi ea dolorem.',1,'2011-10-19'),
 (2,'Suscipit velit assumenda autem. Voluptate impedit quae consequatur architecto. Adipisci incidunt et debitis qui culpa.',2,'1988-08-25'),
 (3,'Ipsa quia ab aut explicabo sint officia. Earum quibusdam cum tempora ut. Sit aliquid non rerum nemo rerum occaecati. Voluptates consequuntur quisquam tempore sed.',3,'1986-02-26'),

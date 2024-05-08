@@ -2,11 +2,11 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (1, '
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (2, 'Freddy', 'Eichmann', '1993-07-01', '105', '6.9', 'rodriguez.jaydon@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (3, 'Shayna', 'Koelpin', '1976-09-13', '157', '5.5', 'lfahey@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (4, 'Thora', 'Kilback', '1999-01-19', '126', '5', 'renner.noel@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (5, 'Priscilla', 'Mitchell', '1982-11-18', '107', '5.6', 'o\'keefe.ettie@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (5, 'Priscilla', 'Mitchell', '1982-11-18', '107', '5.6', 'keefe.ettie@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (6, 'Mitchell', 'Schaefer', '1979-09-26', '196', '6.1', 'adolf41@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (7, 'Mckayla', 'Weber', '1982-05-20', '92', '6.7', 'hagenes.fidel@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (8, 'Anita', 'Herzog', '2001-04-11', '97', '6.8', 'bailey35@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (9, 'Madyson', 'Koelpin', '1991-06-10', '160', '6.2', 'o\'conner.anita@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (9, 'Madyson', 'Koelpin', '1991-06-10', '160', '6.2', 'conner.anita@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (10, 'Mafalda', 'Pagac', '1991-03-29', '163', '6.3', 'kihn.jerod@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (11, 'Eleanore', 'Corwin', '2003-12-27', '119', '6.1', 'hbarrows@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (12, 'Rosa', 'Kessler', '1988-09-21', '126', '5.5', 'vella30@example.org');
@@ -42,7 +42,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (41, 
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (42, 'Obie', 'Stark', '1979-05-25', '173', '5.5', 'omills@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (43, 'Hollie', 'Hauck', '1998-10-25', '93', '5.4', 'samara.lind@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (44, 'Verner', 'Waelchi', '1994-04-10', '144', '5.4', 'reese.jerde@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (45, 'Arlie', 'O\'Keefe', '1993-03-21', '149', '5.4', 'alvina97@example.net');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (45, 'Arlie', 'Keefe', '1993-03-21', '149', '5.4', 'alvina97@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (46, 'Cora', 'Greenfelder', '2003-06-16', '128', '5.4', 'daija53@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (47, 'Carolanne', 'Boyer', '1988-12-02', '108', '5.9', 'cora60@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (48, 'Greg', 'Prosacco', '1974-08-17', '83', '6.5', 'janessa.ruecker@example.net');
@@ -71,7 +71,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (70, 
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (71, 'Casimir', 'Batz', '1994-05-22', '192', '5.8', 'goyette.vilma@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (72, 'Ida', 'Cummerata', '1973-01-21', '116', '5.8', 'yratke@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (73, 'Leann', 'Lowe', '1976-02-16', '170', '6.3', 'khalid02@example.com');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (74, 'Dedrick', 'D\'Amore', '1981-01-19', '184', '6.7', 'emerald94@example.net');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (74, 'Dedrick', 'Amore', '1981-01-19', '184', '6.7', 'emerald94@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (75, 'Rebekah', 'Sporer', '1975-06-02', '189', '5.8', 'fmraz@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (76, 'Lee', 'Jacobs', '1979-06-26', '140', '6.2', 'flo62@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (77, 'William', 'Anderson', '1988-04-30', '200', '5.6', 'pouros.andreanne@example.net');
@@ -131,7 +131,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (130,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (131, 'Giovanna', 'Corkery', '1986-06-02', '176', '6.3', 'elizabeth35@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (132, 'Devonte', 'Flatley', '1976-10-27', '104', '5.6', 'julius35@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (133, 'Marcelino', 'Windler', '1984-03-22', '211', '5.6', 'celia82@example.com');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (134, 'Alejandrin', 'Leffler', '1985-10-19', '166', '6.3', 'o\'keefe.lorena@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (134, 'Alejandrin', 'Leffler', '1985-10-19', '166', '6.3', 'keefe.lorena@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (135, 'Loyce', 'Hoppe', '1995-11-28', '125', '6.3', 'hilbert.hamill@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (136, 'Garth', 'Bosco', '1997-02-04', '165', '5', 'jamaal.batz@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (137, 'Sally', 'Klein', '1995-02-05', '220', '6.5', 'marge43@example.net');
@@ -141,7 +141,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (140,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (141, 'Halie', 'Gleichner', '1994-07-31', '158', '5', 'kuvalis.yasmeen@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (142, 'Kailyn', 'Roob', '1975-09-23', '85', '5.1', 'mollie11@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (143, 'Autumn', 'Pacocha', '1980-03-19', '116', '5.3', 'jeramie66@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (144, 'Trystan', 'Pagac', '1973-12-24', '137', '6.8', 'o\'hara.olin@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (144, 'Trystan', 'Pagac', '1973-12-24', '137', '6.8', 'hara.olin@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (145, 'Orlando', 'Kuhlman', '2000-01-29', '139', '6', 'predovic.imelda@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (146, 'Erika', 'Bartoletti', '1971-07-31', '206', '6.4', 'kassulke.wilma@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (147, 'Dorian', 'Nitzsche', '1994-12-08', '157', '5.2', 'nkovacek@example.com');
@@ -178,7 +178,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (177,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (178, 'Karolann', 'Bogisich', '1989-02-04', '183', '5.5', 'shanahan.jess@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (179, 'Tyreek', 'Morissette', '1978-02-25', '133', '6.9', 'ubrekke@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (180, 'Thelma', 'Vandervort', '1993-06-03', '152', '5.6', 'verona.streich@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (181, 'Tristin', 'O\'Reilly', '1994-07-30', '88', '6.5', 'jarrett.lang@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (181, 'Tristin', 'Reilly', '1994-07-30', '88', '6.5', 'jarrett.lang@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (182, 'Dariana', 'Johnston', '1982-09-16', '134', '6', 'ardella.glover@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (183, 'Clifford', 'Ferry', '1999-03-18', '111', '5.3', 'rosalinda78@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (184, 'Abby', 'Paucek', '1976-07-26', '216', '5.8', 'haylie.stiedemann@example.net');
@@ -258,7 +258,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (257,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (258, 'Eduardo', 'Little', '1987-04-10', '176', '6.2', 'breynolds@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (259, 'Wendy', 'Hamill', '1975-06-02', '153', '5.2', 'stanton.berneice@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (260, 'Jaylan', 'Jacobi', '1997-11-15', '145', '6.2', 'cgrimes@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (261, 'Abbie', 'Wuckert', '1978-10-18', '131', '5.5', 'jo\'kon@example.net');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (261, 'Abbie', 'Wuckert', '1978-10-18', '131', '5.5', 'jokon@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (262, 'Watson', 'Haley', '1981-07-02', '225', '6.8', 'tillman.devan@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (263, 'Shawna', 'Kris', '1997-11-01', '99', '6.4', 'joannie.zboncak@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (264, 'Eldred', 'Bogisich', '1994-03-02', '168', '5.2', 'tauer@example.org');
@@ -523,7 +523,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (522,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (523, 'Hank', 'Mohr', '1976-05-02', '142', '6.6', 'philip.klocko@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (524, 'Jewell', 'Reichel', '1974-08-18', '91', '5.6', 'noberbrunner@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (525, 'Freida', 'Ortiz', '1979-01-05', '104', '6.4', 'avis11@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (526, 'Tess', 'O\'Conner', '1988-01-16', '167', '6.3', 'serena61@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (526, 'Tess', 'Conner', '1988-01-16', '167', '6.3', 'serena61@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (527, 'Keely', 'Mohr', '2001-04-23', '191', '5.9', 'jerry74@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (528, 'Franco', 'Trantow', '1994-05-14', '202', '6.5', 'rupert.stamm@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (529, 'Elaina', 'Zboncak', '1987-12-20', '124', '6.4', 'ekemmer@example.com');
@@ -531,7 +531,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (530,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (531, 'Jazlyn', 'Thompson', '1999-01-18', '194', '5.8', 'delphine.bayer@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (532, 'Nick', 'Tromp', '1997-12-30', '161', '6.3', 'stehr.aliza@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (533, 'Johnson', 'Mayert', '1972-02-13', '188', '6.4', 'kathlyn.jast@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (534, 'Myriam', 'O\'Keefe', '1997-08-28', '168', '6', 'camilla95@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (534, 'Myriam', 'Keefe', '1997-08-28', '168', '6', 'camilla95@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (535, 'Kolby', 'Wilkinson', '1973-11-15', '191', '6.8', 'norval23@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (536, 'Bianka', 'Weber', '1994-01-16', '180', '5.4', 'michaela.jones@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (537, 'Marie', 'Walsh', '2001-03-15', '110', '5.9', 'karl81@example.com');
@@ -573,7 +573,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (572,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (573, 'Minerva', 'Gerlach', '2000-08-22', '210', '6', 'zcorkery@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (574, 'Louvenia', 'Murazik', '1983-04-29', '186', '6.6', 'cecilia95@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (575, 'Elza', 'Bashirian', '2003-08-15', '140', '5.5', 'lturner@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (576, 'Haskell', 'O\'Hara', '1999-02-15', '91', '5.2', 'lhodkiewicz@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (576, 'Haskell', 'Hara', '1999-02-15', '91', '5.2', 'lhodkiewicz@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (577, 'Nellie', 'Towne', '1980-02-29', '109', '5.9', 'thaddeus.flatley@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (578, 'Issac', 'Goodwin', '1992-07-14', '170', '5.2', 'pascale.satterfield@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (579, 'Reynold', 'Grimes', '2004-05-11', '135', '5', 'owilkinson@example.net');
@@ -608,7 +608,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (607,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (608, 'Talia', 'Graham', '1976-06-06', '172', '6.7', 'ocarroll@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (609, 'Eileen', 'Hauck', '1980-12-09', '161', '6.4', 'deckow.trenton@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (610, 'Lia', 'Adams', '1981-10-31', '95', '5.5', 'antonina.steuber@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (611, 'Cornelius', 'Goyette', '1993-01-17', '103', '6.1', 'jarvis.o\'kon@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (611, 'Cornelius', 'Goyette', '1993-01-17', '103', '6.1', 'jarvis.kon@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (612, 'Prince', 'Pacocha', '2002-12-14', '166', '5.1', 'adolfo.davis@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (613, 'Charity', 'Rosenbaum', '1972-11-04', '174', '5.2', 'justus.prohaska@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (614, 'Eugenia', 'Stoltenberg', '1987-03-26', '159', '5.2', 'carli79@example.org');
@@ -616,13 +616,13 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (615,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (616, 'Jarred', 'Stanton', '1977-01-31', '83', '6.7', 'dahlia44@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (617, 'Madaline', 'Bechtelar', '2004-07-20', '168', '6.5', 'osborne.wuckert@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (618, 'Davonte', 'Wunsch', '1996-01-15', '170', '6.5', 'carley.mertz@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (619, 'Eliane', 'O\'Connell', '1991-05-16', '126', '5.7', 'wellington.stark@example.net');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (619, 'Eliane', 'Connell', '1991-05-16', '126', '5.7', 'wellington.stark@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (620, 'Allen', 'Rolfson', '1973-08-10', '145', '6.4', 'justine95@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (621, 'Twila', 'Mante', '1970-09-28', '206', '5.6', 'thiel.mafalda@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (622, 'Xavier', 'Streich', '1993-11-11', '212', '6.7', 'wortiz@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (623, 'Stella', 'McClure', '1988-04-07', '224', '6.6', 'gfeil@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (624, 'Mauricio', 'Trantow', '1988-03-13', '193', '5.3', 'chomenick@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (625, 'Nelson', 'O\'Keefe', '2002-07-03', '167', '5.2', 'luis24@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (625, 'Nelson', 'Keefe', '2002-07-03', '167', '5.2', 'luis24@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (626, 'Maximus', 'Nicolas', '1994-11-01', '95', '6.4', 'katrine43@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (627, 'Zoila', 'Weimann', '1988-06-30', '215', '6.6', 'mathilde88@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (628, 'Dayton', 'Wisoky', '1993-04-14', '91', '5', 'wcasper@example.org');
@@ -633,8 +633,8 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (632,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (633, 'Addie', 'Hartmann', '2004-02-19', '176', '5.1', 'ima50@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (634, 'Bertrand', 'Weimann', '1982-01-20', '218', '5.3', 'swaniawski.myles@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (635, 'Izaiah', 'Morissette', '1978-04-30', '161', '6.9', 'rafael.mcglynn@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (636, 'Hellen', 'O\'Reilly', '1973-10-25', '130', '6.9', 'kemmer.darron@example.com');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (637, 'Shayna', 'O\'Kon', '1989-03-20', '121', '5', 'laila97@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (636, 'Hellen', 'Reilly', '1973-10-25', '130', '6.9', 'kemmer.darron@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (637, 'Shayna', 'Kon', '1989-03-20', '121', '5', 'laila97@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (638, 'Blanca', 'Treutel', '1991-03-23', '89', '6.2', 'lmcclure@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (639, 'Rebekah', 'Feil', '1982-03-31', '133', '6.8', 'ttorp@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (640, 'Lucinda', 'Hudson', '1976-06-13', '156', '5.9', 'ydibbert@example.net');
@@ -659,7 +659,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (658,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (659, 'Audie', 'Connelly', '1975-06-14', '207', '6.4', 'mcglynn.alfred@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (660, 'Tate', 'Kessler', '1980-07-16', '114', '5.7', 'leila78@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (661, 'Richmond', 'Littel', '1989-08-08', '123', '7', 'sabrina.ruecker@example.com');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (662, 'Pascale', 'Funk', '1977-05-13', '212', '6.5', 'kira.o\'connell@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (662, 'Pascale', 'Funk', '1977-05-13', '212', '6.5', 'kira.connell@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (663, 'Christelle', 'Rempel', '1986-07-10', '156', '6', 'howell.matt@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (664, 'Riley', 'Quitzon', '2003-10-29', '181', '6.1', 'raul.witting@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (665, 'Sally', 'Durgan', '1985-02-22', '143', '6.2', 'felicia84@example.com');
@@ -735,7 +735,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (734,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (735, 'Gregory', 'Buckridge', '1996-06-05', '76', '5.1', 'denis74@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (736, 'Jensen', 'Sipes', '1996-10-03', '89', '5.9', 'rosenbaum.dorothea@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (737, 'Laurine', 'Streich', '1993-02-15', '211', '6.5', 'dixie.beer@example.com');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (738, 'Austyn', 'Harris', '2001-06-02', '182', '6.4', 'oo\'reilly@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (738, 'Austyn', 'Harris', '2001-06-02', '182', '6.4', 'reilly@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (739, 'Jeanie', 'Pagac', '1981-03-05', '170', '6.6', 'laury54@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (740, 'Tony', 'Goyette', '1978-03-25', '132', '5.4', 'jamar30@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (741, 'Courtney', 'Marquardt', '1995-10-21', '110', '6.3', 'vgorczany@example.com');
@@ -751,7 +751,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (750,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (751, 'Ernestine', 'Douglas', '1994-05-11', '88', '6.4', 'raheem41@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (752, 'Corene', 'Witting', '1996-09-03', '102', '5.4', 'branson.pollich@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (753, 'Jamey', 'Corwin', '1998-10-28', '78', '6.4', 'humberto02@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (754, 'Curt', 'D\'Amore', '1990-09-27', '79', '6.2', 'lstehr@example.net');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (754, 'Curt', 'Amore', '1990-09-27', '79', '6.2', 'lstehr@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (755, 'Leif', 'Sporer', '1996-04-12', '114', '5.6', 'vdoyle@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (756, 'Frederic', 'Thiel', '1971-08-20', '125', '6.3', 'sjohnston@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (757, 'Jeramy', 'Christiansen', '1988-04-04', '186', '6.8', 'gerhold.oma@example.org');
@@ -825,7 +825,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (824,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (825, 'Jalon', 'Kemmer', '1984-01-11', '111', '6.4', 'kgulgowski@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (826, 'Letitia', 'Mayert', '1975-01-08', '205', '5.4', 'virgie91@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (827, 'Donavon', 'Nikolaus', '1985-04-30', '202', '5.4', 'dprohaska@example.org');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (828, 'Janis', 'O\'Kon', '1971-08-03', '148', '6.9', 'devyn71@example.org');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (828, 'Janis', 'Kon', '1971-08-03', '148', '6.9', 'devyn71@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (829, 'Nils', 'Grady', '1971-01-09', '81', '6.9', 'gbednar@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (830, 'Carlee', 'Wolff', '1982-06-13', '136', '6.3', 'davon.klein@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (831, 'Virgie', 'Schamberger', '1977-08-08', '156', '6.3', 'zgreen@example.org');
@@ -919,7 +919,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (918,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (919, 'Kayleigh', 'Corwin', '1987-05-03', '134', '6.8', 'ikling@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (920, 'Naomie', 'Dickens', '1979-06-17', '81', '5.6', 'nyasia.corkery@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (921, 'Claudie', 'Aufderhar', '1990-07-02', '198', '5.7', 'alvah53@example.net');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (922, 'Joanne', 'Bartell', '1984-04-02', '105', '5', 'o\'kon.alba@example.com');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (922, 'Joanne', 'Bartell', '1984-04-02', '105', '5', 'kon.alba@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (923, 'Esther', 'Kshlerin', '1989-01-28', '187', '5.1', 'florida.maggio@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (924, 'Lacy', 'Kuhic', '1991-07-11', '154', '6.8', 'gusikowski.aubree@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (925, 'Asa', 'Parisian', '1987-08-16', '166', '5.9', 'cbahringer@example.net');
@@ -993,7 +993,7 @@ INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (992,
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (993, 'Ervin', 'Turcotte', '1984-02-16', '181', '5.3', 'rempel.clara@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (994, 'Bella', 'Huel', '1992-04-02', '191', '6', 'ruben.wisoky@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (995, 'Adan', 'Ferry', '1997-01-22', '113', '6', 'abdullah.rogahn@example.com');
-INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (996, 'Garrett', 'Wilkinson', '1994-12-25', '144', '5.9', 'o\'hara.danika@example.net');
+INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (996, 'Garrett', 'Wilkinson', '1994-12-25', '144', '5.9', 'hara.danika@example.net');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (997, 'Willa', 'Schamberger', '1972-05-16', '190', '5.1', 'joanny39@example.org');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (998, 'Josh', 'Bartell', '1978-08-26', '115', '6.6', 'daugherty.kyle@example.com');
 INSERT INTO User (UserID, FName, LName, DOB, Weight, Height, Email) VALUES (999, 'Savanah', 'Champlin', '1987-02-16', '214', '5.5', 'bcormier@example.net');
