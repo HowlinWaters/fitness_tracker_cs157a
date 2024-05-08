@@ -23,13 +23,13 @@ function goBack() {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // Fetch the database from SQL server.
 document.addEventListener("DOMContentLoaded", () => {
-  // First, fetch a request to get one user based on their user ID (globalized).
+  // First, fetch a request to get one user based on their profile ID (globalized).
   fetch("http://localhost:8080/profile/"+sessionStorage.getItem("GlobalViewProfileID"), {
     headers: {
       "Content-Type": "application/json",
     },
   })
-    // User's data is returned in JSON format.
+    // Profile data is returned in JSON format.
     .then(function (profileRes) {
       if (!profileRes.ok) {
         throw new Error("Failed to fetch profile");
@@ -37,17 +37,17 @@ document.addEventListener("DOMContentLoaded", () => {
       return profileRes.json();
     })
     .then(function (profileData) {
-      // Next, fetch a request to get the TracksActivities table with the fetched user ID from before.
+      // Next, fetch a request to get the comments with the fetched profile id
       return fetch(`http://localhost:8080/commentwprofile/${profileData.ProfileID}`);
     })
-    // A table of the fetched user's activities data is returned in JSON format.
+    // A table of the fetched profile's comment data is returned in JSON format.
     .then(function (commentsRes) {
       if (!commentsRes.ok) {
         throw new Error("Failed to fetch profiles");
       }
       return commentsRes.json();
     })
-    // Since activities data is in an array, each activity must be isolated from the array using the map() function to iterate through the activities.
+    // Since comments data is in an array, each comment must be isolated from the array using the map() function to iterate through the comments.
     // Then, each activity ID sends a fetch request to receive each
     .then(function (commentsData) {
       // This requires iteration with map() to go through all the data.
@@ -60,11 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
         })
       );
 
-      // Promise.all() ensures that all the iterated fetched activities are returned as a single Promise.
-      // Having multiple Promises returned may cause errors to the fetch chain (though I'm not exactly sure what errors would arise).
+      // Promise.all() ensures that all the iterated fetched comments are returned as a single Promise.
       return Promise.all(commentFetchPromises);
     })
-    // Another iteration/map is required to convert all the activities in the table to JSON format.
+    // Another iteration/map is required to convert all the comments in the table to JSON format.
     .then(function (commentResponses) {
       const commentJSONPromises = commentResponses.map((response) =>
         response.json()

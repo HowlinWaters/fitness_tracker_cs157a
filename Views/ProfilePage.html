@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>User Profile</title>
+    <link rel="stylesheet" href="Styles/ProfilePageStyle.css">
 </head>
 <body>
-    <header>
-        <h1><u>Profile</u></h1>
-    </header>
-    <main>
-        <div>
-            <h2>Name: John Smith</h2>
-            <p>Milestone: Reached 10,000 steps today!</p>
+    <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+            <h2>Personal Information</h2>
+            <ul>
+                <li><strong>Name:</strong> <span id="name">John Doe</span></li>
+                <li><strong>Date of Birth:</strong> <span id="dob">January 1, 1990</span></li>
+                <li><strong>Weight:</strong> <span id="weight">70 kg</span></li>
+                <li><strong>Height:</strong> <span id="height">170 cm</span></li>
+                <li><strong>Email:</strong> <span id="email">johndoe@example.com</span></li>
+                <li><strong>BMI:</strong> <span id="bmi">placeholder</span></li>
+            </ul>
+            <h2>Personal Note</h2>
+            <p id="personal-note">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero et nibh placerat, sit amet varius dolor venenatis. Vivamus ultricies risus sit amet neque dictum, non rutrum risus eleifend.</p>
+            <h2>Milestones</h2>
+            <ul class="milestones" id="milestones-list">
+                <li id="milestone1">placeholder</li>
+                <li id="milestone2">placeholder</li>
+            </ul>
         </div>
-    </main>
-    
-    <script src="scripts/ProfilePage.js"/>
+    </div>
+    <script src="scripts/ProfilePage.js"></script>
 </body>
 </html>
