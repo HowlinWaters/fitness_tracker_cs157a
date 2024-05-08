@@ -407,7 +407,7 @@ export async function getCommentwProfile(id) {
         SELECT * FROM Comment WHERE ProfileID = ?`,
     [id]
   );
-  return result[0]; // Show all comments a user has made?
+  return result; // Show all comments a user has made?
 }
 
 export async function createComment(ProfileID, Content, UserID, PublishDate) {

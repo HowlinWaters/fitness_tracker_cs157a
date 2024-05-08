@@ -1,3 +1,5 @@
+sessionStorage.clear();
+
 function saveUserData() {
   event.preventDefault();
   // Get form inputs
@@ -16,4 +18,10 @@ function saveUserData() {
       sessionStorage.setItem("GlobalUserID", GlobalUserID);
       console.log(data);
     });
+
+    redirectProfilePage();
+}
+
+function redirectProfilePage() {
+  window.parent.postMessage('ProfilePage.html', '*');
 }
