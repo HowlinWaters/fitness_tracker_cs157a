@@ -3,14 +3,20 @@ USE fitnesstracker;
 
 CREATE TABLE User (
     UserID INT AUTO_INCREMENT PRIMARY KEY,
-    Username VARCHAR(50),
-    Password VARCHAR(50),
     FName VARCHAR(50),
     LName VARCHAR(50),
     DOB DATE,
     Weight VARCHAR(50),
     Height VARCHAR(50),
     Email VARCHAR(100)
+);
+
+CREATE TABLE Login (
+    Username VARCHAR(50),
+    Password VARCHAR(50),
+    UserID INT,
+    PRIMARY KEY(Username, Password),
+    FOREIGN KEY (UserID) REFERENCES User(UserID) ON DELETE CASCADE
 );
 
 CREATE TABLE FitnessGoal (
