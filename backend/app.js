@@ -6,6 +6,7 @@ import {
   getUser,
   getUserFromLogin,
   createUser,
+  createLogin,
   updateUser,
   deleteUser,
   getFitnessGoalUser,
@@ -37,13 +38,19 @@ import {
   getComment,
   createComment,
   updateComment,
-  getAllProfiles
+  getAllProfiles,
+  getBMI,
+  createBMI,
+  updateBMI,
+  getNote,
+  createNote,
+  updateNote,
+  getCommentwProfile,
 } from "./database.js";
-
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended : false }));
+app.use(express.urlencoded({ extended: false }));
 
 //For Users table
 
@@ -65,37 +72,21 @@ app.get("/users/:Username/:Password", async (req, res) => {
   res.send(user);
 });
 
+app.post("/createlogin", async (req, res) => {
+  const { Username, Password, UserID } = req.body;
+  const user = await createLogin(Username, Password, UserID);
+  res.send(user);
+});
+
 app.post("/createusers", async (req, res) => {
-  const { Username, Password, FName, LName, DOB, Weight, Height, Email } =
-    req.body;
-  const user = await createUser(
-    Username,
-    Password,
-    FName,
-    LName,
-    DOB,
-    Weight,
-    Height,
-    Email
-  );
+  const { FName, LName, DOB, Weight, Height, Email } = req.body;
+  const user = await createUser(FName, LName, DOB, Weight, Height, Email);
   res.status(201).send(user);
 });
 
 app.put("/updateusers", async (req, res) => {
-  const {
-    Username,
-    Password,
-    FName,
-    LName,
-    DOB,
-    Weight,
-    Height,
-    Email,
-    UserID,
-  } = req.body;
+  const { FName, LName, DOB, Weight, Height, Email, UserID } = req.body;
   const user = await updateUser(
-    Username,
-    Password,
     FName,
     LName,
     DOB,
@@ -289,25 +280,25 @@ app.get("/milestones/:id", async (req, res) => {
   const id = req.params.id;
   const milestones = await getMilestones(id);
   res.send(milestones);
-})
+});
 
 app.post("/createmilestone", async (req, res) => {
-  const {Milestone, ProfileID} = req.body;
+  const { Milestone, ProfileID } = req.body;
   const milestone = await createMilestone(Milestone, ProfileID);
   res.status(201).send(milestone);
-})
+});
 
 app.put("/updatemilestones", async (req, res) => {
-  const {MilestoneID, Milestone} = req.body;
+  const { MilestoneID, Milestone } = req.body;
   const milestone = await updateMilestone(MilestoneID, Milestone);
   res.status(201).send(milestone);
-})
+});
 
 app.delete("/deletemilestone", async (req, res) => {
-  const {MilestoneID} = req.body;
+  const { MilestoneID } = req.body;
   const milestone = await deleteMilestone(MilestoneID);
   res.send(milestone);
-})
+});
 //end of milestones
 
 // start of profilehasmilestones
@@ -315,33 +306,82 @@ app.get("/profilemilestones/:id", async (req, res) => {
   const id = req.params.id;
   const profilemilestones = await getProfileMilestones(id);
   res.send(profilemilestones);
-})
+});
 
 app.post("/createprofilemilestones", async (req, res) => {
-  const {ProfileID, MilestoneID} = req.body;
-  const profilemilestones = await createProfileMilestones(ProfileID, MilestoneID);
+  const { ProfileID, MilestoneID } = req.body;
+  const profilemilestones = await createProfileMilestones(
+    ProfileID,
+    MilestoneID
+  );
   res.status(201).send(profilemilestones);
-})
+});
 
 //start of comment
 app.get("/comment/:id", async (req, res) => {
   const id = req.params.id;
   const comment = await getComment(id);
   res.send(comment);
-})
+});
+
+app.get("/commentwprofile/:id", async (req, res) => {
+  const id = req.params.id;
+  const comment = await getCommentwProfile(id);
+  res.send(comment);
+});
 
 app.post("/createcomment", async (req, res) => {
-  const {ProfileID, Content, UserID, PublishDate} = req.body;
+  const { ProfileID, Content, UserID, PublishDate } = req.body;
   const comment = await createComment(ProfileID, Content, UserID, PublishDate);
   res.status(201).send(comment);
-})
+});
 
 app.put("/updatecomment", async (req, res) => {
-  const {ProfileID, Content, UserID, PublishDate} = req.body;
+  const { ProfileID, Content, UserID, PublishDate } = req.body;
   const comment = await updateComment(ProfileID, Content, UserID, PublishDate);
   res.status(201).send(comment);
-})
+});
 //end of comment
+
+//start of BMI
+app.get("/bmi/:id", async (req, res) => {
+  const id = req.params.id;
+  const bmi = await getBMI(id);
+  res.send(bmi);
+});
+
+app.post("/createbmi", async (req, res) => {
+  const { BMIID, BMIContent } = req.body;
+  const bmi = await createBMI(BMIID, BMIContent);
+  res.status(201).send(bmi);
+});
+
+app.put("/updatebmi", async (req, res) => {
+  const { BMIID, BMIContent } = req.body;
+  const bmi = await updateBMI(BMIID, BMIContent);
+  res.status(201).send(bmi);
+});
+//end of BMI
+
+//start of Note
+app.get("/note/:id", async (req, res) => {
+  const id = req.params.id;
+  const note = await getNote(id);
+  res.send(note);
+});
+
+app.post("/createnote", async (req, res) => {
+  const { NoteID, NoteContent } = req.body;
+  const note = await createNote(NoteID, NoteContent);
+  res.status(201).send(note);
+});
+
+app.put("/updatenote", async (req, res) => {
+  const { NoteID, NoteContent } = req.body;
+  const note = await updateNote(NoteID, NoteContent);
+  res.status(201).send(note);
+});
+//end of Note
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

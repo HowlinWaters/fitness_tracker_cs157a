@@ -27,8 +27,6 @@ function saveUserData() {
     },
     method: "POST",
     body: JSON.stringify({
-      Username: username,
-      Password: password,
       FName: fname,
       LName: lname,
       DOB: dob,
@@ -38,5 +36,19 @@ function saveUserData() {
     }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data));
+    .then((data) =>
+      fetch("http://localhost:8080/createlogin", {
+        headers: {
+          "Content-type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          Username: username,
+          Password: password,
+          UserID: data.UserID,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+    );
 }

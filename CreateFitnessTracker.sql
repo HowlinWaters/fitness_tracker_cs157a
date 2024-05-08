@@ -60,7 +60,7 @@ CREATE TABLE ActivityLocation (
 );
 
 CREATE TABLE Profile (
-    ProfileID INT,
+    ProfileID INT PRIMARY KEY,
     ProfileName VARCHAR(255),
     FOREIGN KEY (ProfileID) REFERENCES User(UserID) ON DELETE CASCADE
 );
@@ -78,7 +78,20 @@ CREATE TABLE ProfileHasMilestones (
     FOREIGN KEY (MilestoneID) REFERENCES MIlestones(MilestoneID) ON DELETE CASCADE
 );
 
+CREATE TABLE BMI (
+    BMIID INT PRIMARY KEY, 
+    BMIContent TEXT, 
+    FOREIGN KEY (BMIID) REFERENCES Profile(ProfileID) ON DELETE CASCADE
+);
+
+CREATE TABLE Note (
+    NoteID INT PRIMARY KEY, 
+    NoteContent TEXT, 
+    FOREIGN KEY (NoteID) REFERENCES Profile(ProfileID) ON DELETE CASCADE
+);
+
 CREATE TABLE Comment (
+    CommentID INT AUTO_INCREMENT PRIMARY KEY,
     ProfileID INT,
     Content TEXT,
     UserID INT,

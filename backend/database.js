@@ -32,37 +32,38 @@ export async function getUser(id) {
 export async function getUserFromLogin(Username, Password) {
   const [result] = await dbconnection.query(
     `
-      SELECT UserID FROM User WHERE Username = ? AND Password = ?`,
+      SELECT UserID FROM Login WHERE Username = ? AND Password = ?`,
     [Username, Password]
   );
   return result[0];
 }
 
-export async function createUser(
-  Username,
-  Password,
-  FName,
-  LName,
-  DOB,
-  Weight,
-  Height,
-  Email
-) {
+export async function createLogin(Username, Password, UserID) {
   const [result] = await dbconnection.query(
     `
-    INSERT INTO User (Username, Password, FName, LName, DOB, Weight, Height, Email)
-    VALUES(?,?,?,?,?,?,?,?)
+    INSERT INTO Login (Username, Password, UserID)
+    VALUES(?,?,?)`,
+    [Username, Password, UserID]
+  );
+  await createProfile(Username, UserID);
+  await createBMI(UserID, "");
+  await createNote(UserID, "");
+  return getUser(UserID);
+}
+
+export async function createUser(FName, LName, DOB, Weight, Height, Email) {
+  const [result] = await dbconnection.query(
+    `
+    INSERT INTO User (FName, LName, DOB, Weight, Height, Email)
+    VALUES(?,?,?,?,?,?)
     `,
-    [Username, Password, FName, LName, DOB, Weight, Height, Email]
+    [FName, LName, DOB, Weight, Height, Email]
   );
   const id = result.insertId;
-  await createProfile(Username, id);
   return getUser(id);
 }
 
 export async function updateUser(
-  Username,
-  Password,
   FName,
   LName,
   DOB,
@@ -74,10 +75,10 @@ export async function updateUser(
   const [result] = await dbconnection.query(
     `
         UPDATE User
-        SET Username = ?, Password = ?, FName = ?, LName = ?, DOB = ?, Weight = ?, Height = ?, Email = ?
+        SET FName = ?, LName = ?, DOB = ?, Weight = ?, Height = ?, Email = ?
         WHERE UserID = ?
     `,
-    [Username, Password, FName, LName, DOB, Weight, Height, Email, UserID]
+    [FName, LName, DOB, Weight, Height, Email, UserID]
   );
   return getUser(UserID);
 }
@@ -321,116 +322,173 @@ export async function updateProfile(ProfileName, UserID) {
 }
 
 export async function getAllProfiles() {
-  const [result] = await dbconnection.query(
-    `SELECT * FROM Profile`
-  );
+  const [result] = await dbconnection.query(`SELECT * FROM Profile`);
   return result;
 }
 //end of profile
 
-
-
 //start of milestones
 export async function getMilestones(id) {
-    const [result] = await dbconnection.query(
-        `
+  const [result] = await dbconnection.query(
+    `
         SELECT * FROM Milestones WHERE MilestoneID = ?`,
-        [id]
-    );
-    return result[0];
+    [id]
+  );
+  return result[0];
 }
 
 export async function createMilestone(Milestone, ProfileID) {
-    const [result] = await dbconnection.query(
-        `INSERT INTO Milestones (Milestone)
+  const [result] = await dbconnection.query(
+    `INSERT INTO Milestones (Milestone)
         VALUES (?)`,
-        [Milestone]
-    );
-    const id = result.insertId;
-    await createProfileMilestones(ProfileID, id);
-    return getMilestones(id);
+    [Milestone]
+  );
+  const id = result.insertId;
+  await createProfileMilestones(ProfileID, id);
+  return getMilestones(id);
 }
 
 export async function updateMilestone(MilestoneID, Milestone) {
-    const [result] = await dbconnection.query(
-        `
+  const [result] = await dbconnection.query(
+    `
         UPDATE Milestones
         SET Milestone = ?
         WHERE MilestoneID = ?`,
-        [Milestone, MilestoneID]
-    );
-    return getMilestones(MilestoneID);
+    [Milestone, MilestoneID]
+  );
+  return getMilestones(MilestoneID);
 }
 
 export async function deleteMilestone(MilestoneID) {
-    const [result] = await dbconnection.query(
-        `
+  const [result] = await dbconnection.query(
+    `
         DELETE FROM Milestones WHERE MilestoneID = ?`,
-        [MilestoneID]
-    );
-    return result.affectedRows;
+    [MilestoneID]
+  );
+  return result.affectedRows;
 }
 //end of milestones
 
 // I'm not sure if we need this, so I'll leave the functions for ProfileHasMilestones for now.
 // start of profilehasmilestones
 export async function getProfileMilestones(id) {
-    const [result] = await dbconnection.query(
-        `
+  const [result] = await dbconnection.query(
+    `
         SELECT * FROM ProfileHasMilestones WHERE ProfileID = ?`,
-        [id]
-    );
-    return result[0];
+    [id]
+  );
+  return result[0];
 }
 
 export async function createProfileMilestones(ProfileID, MilestoneID) {
-    const [result] = await dbconnection.query(
-        `
+  const [result] = await dbconnection.query(
+    `
         INSERT INTO ProfileHasMilestones (ProfileID, MilestoneID)
         VALUES (?, ?)`,
-        [ProfileID, MilestoneID]
-    );
-    return getProfileMilestones(ProfileID);
+    [ProfileID, MilestoneID]
+  );
+  return getProfileMilestones(ProfileID);
 }
 //end of profilehasmilestones
 
 //start of comment
 export async function getComment(id) {
-    const [result] = await dbconnection.query(
-        `
-        SELECT * FROM Comment WHERE ProfileID = ?`,
-        [id]
-    );
-    return result; // Show all comments a user has made?
+  const [result] = await dbconnection.query(
+    `
+        SELECT * FROM Comment WHERE CommentID = ?`,
+    [id]
+  );
+  return result[0]; // Show all comments a user has made?
 }
 
-export async function createComment(
-    ProfileID, 
-    Content,
-    UserID,
-    PublishDate
-) {
-    const [result] = await dbconnection.query(
-        `
+export async function getCommentwProfile(id) {
+  const [result] = await dbconnection.query(
+    `
+        SELECT * FROM Comment WHERE ProfileID = ?`,
+    [id]
+  );
+  return result[0]; // Show all comments a user has made?
+}
+
+export async function createComment(ProfileID, Content, UserID, PublishDate) {
+  const [result] = await dbconnection.query(
+    `
         INSERT INTO Comment(ProfileID, Content, UserID, PublishDate)
         VALUES (?, ?, ?, ?)`,
-        [ProfileID, Content, UserID, PublishDate]
-    );
-    return getComment(ProfileID);
+    [ProfileID, Content, UserID, PublishDate]
+  );
+  return getComment(ProfileID);
 }
 
-export async function updateComment(
-    ProfileID,
-    Content,
-    UserID,
-    PublishDate
-) {
-    const [result] = await dbconnection.query(
-        `
+export async function updateComment(ProfileID, Content, UserID, PublishDate) {
+  const [result] = await dbconnection.query(
+    `
         UPDATE Comment
         SET ProfileID = ?, Content = ?, UserID = ?, PublishDate = ?`,
-        [ProfileID, Content, UserID, PublishDate]
-    );
-    return getComment(ProfileID);
+    [ProfileID, Content, UserID, PublishDate]
+  );
+  return getComment(ProfileID);
 }
 //end of comment
+
+//start of BMI
+export async function getBMI(id) {
+  const [result] = await dbconnection.query(
+    `
+      SELECT * FROM BMI WHERE BMIID = ?`,
+    [id]
+  );
+  return result[0]; // Show all comments a user has made?
+}
+
+export async function createBMI(BMIID, BMIContent) {
+  const [result] = await dbconnection.query(
+    `
+      INSERT INTO BMI(BMIID, BMIContent)
+      VALUES (?, ?)`,
+    [BMIID, BMIContent]
+  );
+  return getBMI(BMIID);
+}
+
+export async function updateBMI(BMIID, BMIContent) {
+  const [result] = await dbconnection.query(
+    `
+      UPDATE BMI
+      SET BMIID = ?, BMIContent = ?`,
+    [BMIID, BMIContent]
+  );
+  return getBMI(BMIID);
+}
+//end of BMI
+
+//start of Note
+export async function getNote(id) {
+  const [result] = await dbconnection.query(
+    `
+      SELECT * FROM Note WHERE NoteID = ?`,
+    [id]
+  );
+  return result[0]; // Show all comments a user has made?
+}
+
+export async function createNote(NoteID, NoteContent) {
+  const [result] = await dbconnection.query(
+    `
+      INSERT INTO Note(NoteID, NoteContent)
+      VALUES (?, ?)`,
+    [NoteID, NoteContent]
+  );
+  return getNote(NoteID);
+}
+
+export async function updateNote(NoteID, NoteContent) {
+  const [result] = await dbconnection.query(
+    `
+      UPDATE Note
+      SET NoteID = ?, NoteContent = ?`,
+    [NoteID, NoteContent]
+  );
+  return getNote(NoteID);
+}
+//end of Note

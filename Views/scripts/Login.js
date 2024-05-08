@@ -14,5 +14,6 @@ function saveUserData() {
     .then((data) => {
       GlobalUserID = data.UserID;
       sessionStorage.setItem("GlobalUserID", GlobalUserID);
+      console.log(data);
     });
 }
