@@ -1,9 +1,5 @@
 // Fetch the database from SQL server.
 document.addEventListener("DOMContentLoaded", function (id) {
-  // Variables below are needed to save fetched data.
-  var user;
-  var activities;
-
   // Chained fetches (ugh!).
   // First, fetch a request to get one user based on their user ID (globalized).
   fetch("http://localhost:8080/users/"+sessionStorage.getItem("GlobalUserID"), {
@@ -19,8 +15,6 @@ document.addEventListener("DOMContentLoaded", function (id) {
       return userRes.json();
     })
     .then(function (userData) {
-      // The user data gets transfered to the variable.
-      user = userData;
       // Next, fetch a request to get the TracksActivities table with the fetched user ID from before.
       return fetch(`http://localhost:8080/tracksactivities/${userData.UserID}`);
     })
@@ -71,29 +65,12 @@ document.addEventListener("DOMContentLoaded", function (id) {
 const addButton = document.querySelector("#addEntryButton");
 
 // JavaScript to handle adding entries to the table
-addButton.onclick = function (data) {
+addButton.onclick = () => {
   var name = prompt("Enter activity:");
   var duration = prompt("Enter duration in minutes:");
   var calories = prompt("Enter calories burned:");
 
   if (name && duration && calories) {
-    // Unused
-    var tableBody = document.getElementById("activityTableBody");
-    var newRow = document.createElement("tr");
-    newRow.innerHTML =
-      `<td id="name-col">` +
-      name +
-      `</td>` +
-      `<td id="dur-col">` +
-      duration +
-      `</td>` +
-      `<td id="cal-col">` +
-      calories +
-      `</td>` +
-      `<td><button class="delete-btn">Delete</td>` +
-      `<td><button class="edit-btn">Edit</td>`;
-    // Unused
-
     fetch("http://localhost:8080/createactivities", {
       method: "POST",
       headers: {
@@ -109,9 +86,6 @@ addButton.onclick = function (data) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        // Unused
-        newRow.setAttribute("data-id", data.ActivityID);
-        // Unused
       })
       .catch((err) => console.log(err));
     location.reload();
@@ -120,9 +94,7 @@ addButton.onclick = function (data) {
   }
 };
 
-document
-  .querySelector("table tbody")
-  .addEventListener("click", function (event) {
+document.querySelector("table tbody").addEventListener("click", function (event) {
     if (event.target.className === "delete-btn") {
       var rowID = event.target.dataset.id;
       deleteRowById(rowID);
@@ -171,20 +143,6 @@ function editRowById(id) {
       .then((res) => {
         if (!res.ok) throw new Error("Failed to update row.");
         return res.json();
-      })
-      // Unused
-      .then((data) => {
-        const row = document.querySelector(`tr[data-id="${id}"]`);
-        if (row) {
-          row.querySelector("#name-col").textContent = name;
-          row.querySelector("#dur-col").textContent = duration;
-          row.querySelector("#cal-col").textContent = calories;
-
-          row.querySelector("#name-col").setAttribute("data-name", name);
-          row.querySelector("#dur-col").setAttribute("data-duration", duration);
-          row.querySelector("#cal-col").setAttribute("data-calories", calories);
-        }
-        // Unused
       })
       .then((data) => {
         location.reload();

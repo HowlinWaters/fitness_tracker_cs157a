@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function (id) {
-    var user;
-    var locations;
-
     fetch("http://localhost:8080/users/1", {
         headers : {
             "Content-Type" : "application/json"
@@ -13,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function (id) {
         return userRes.json();
     })
     .then(function(userData) {
-        user = userData;
         return fetch(`http://localhost:8080/activitylocation/${userData.UserID}`);
     })
     .then(function(locationsRes) {
@@ -156,6 +152,6 @@ function editRowById(id) {
             console.log(data);
             location.reload();
         })
-        .catch(error => console.log("Failed to update row."));
+        .catch(error => console.log("Error:", error));
     }
 }

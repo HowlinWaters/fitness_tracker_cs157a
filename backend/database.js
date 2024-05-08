@@ -99,7 +99,7 @@ export async function getFitnessGoalUser(id) {
     `SELECT * FROM FitnessGoal WHERE UserID = ?`,
     [id]
   );
-  return result[0];
+  return result;
 }
 
 export async function getFitnessGoal(id) {
@@ -107,7 +107,7 @@ export async function getFitnessGoal(id) {
     `SELECT * FROM FitnessGoal WHERE FitnessGoalID = ?`,
     [id]
   );
-  return result;
+  return result[0];
 }
 
 export async function createFitnessGoal(
