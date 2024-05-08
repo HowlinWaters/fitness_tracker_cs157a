@@ -1,4 +1,7 @@
-sessionStorage.clear();
+document.addEventListener('DOMContentLoaded', function() {
+  // Clear session storage
+  sessionStorage.clear();
+});
 
 function saveUserData() {
   event.preventDefault();
