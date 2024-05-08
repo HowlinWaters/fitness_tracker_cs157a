@@ -36,7 +36,8 @@ import {
   createProfileMilestones,
   getComment,
   createComment,
-  updateComment
+  updateComment,
+  getAllProfiles
 } from "./database.js";
 
 
@@ -263,6 +264,11 @@ app.get("/profile/:id", async (req, res) => {
   const id = req.params.id;
   const profile = await getProfile(id);
   res.send(profile);
+});
+
+app.get("/allprofiles", async (req, res) => {
+  const profiles = await getAllProfiles();
+  res.send(profiles);
 });
 
 app.post("/createprofile", async (req, res) => {

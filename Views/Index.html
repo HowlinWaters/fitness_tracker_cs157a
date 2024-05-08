@@ -12,23 +12,25 @@
       <nav>
         <ul>
           <!-- Links to pages -->
-          <li><a href="ProfilePage.html" target="Profile">Profile</a></li>
-          <li><a href="ActivityPage.html" target="Profile">Activities</a></li>
-          <li><a href="FitnessGoalPage.html" target="Profile">Goals</a></li>
-          <li><a href="LocationWall.html" target="Profile">Locations</a></li>
-          <li><a href="Login.html" target="Profile">Login</a></li>
+          <li><a href="ProfilePage.html" target="Startup">Profile</a></li>
+          <li><a href="ActivityPage.html" target="Startup">Activities</a></li>
+          <li><a href="FitnessGoalPage.html" target="Startup">Goals</a></li>
+          <li><a href="LocationWall.html" target="Startup">Locations</a></li>
+          <li><a href="ViewProfile.html" target="Startup">View Profile</a></li>
+          <li><a href="Login.html" target="Startup">Login</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
       <!-- Content will be loaded here; Default page shown is 'ProfilePage' -->
-      <iframe
-        name="Profile"
-        src="ProfilePage.html"
+      <iframe id="contentFrame"
+        name="Startup"
+        src="Login.html"
         style="display: block; border: none; height: 100vh; width: 100%"
       ></iframe>
     </main>
+    <script src="scripts/Index.js"></script>
 
     <footer>
       <p>&copy; 2024 Fitness Tracker</p>

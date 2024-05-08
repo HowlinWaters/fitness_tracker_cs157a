@@ -319,6 +319,13 @@ export async function updateProfile(ProfileName, UserID) {
   );
   return getProfile(UserID);
 }
+
+export async function getAllProfiles() {
+  const [result] = await dbconnection.query(
+    `SELECT * FROM Profile`
+  );
+  return result;
+}
 //end of profile
 
 
