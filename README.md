@@ -4,7 +4,7 @@ This is a web application that records and tracks users' fitness sessions.
 # Instructions to set up the project
 1. Have MySQL already installed and set up.
 3. Clone this github repo
-4. Run CreateFitnessTracker.sql
+4. Run CreateFitnessTracker.sql to create the tables
 5. Run InsertIntoTables.sql to insert example data into the database
 6. Install node.js v20
 7. Install Visual Studio Code
