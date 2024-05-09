@@ -357,8 +357,8 @@ app.post("/createbmi", async (req, res) => {
 });
 
 app.put("/updatebmi", async (req, res) => {
-  const {BMIContent, BMIID } = req.body;
-  const bmi = await updateBMI(BMIContent, BMIID);
+  const {BMIID, BMIContent} = req.body;
+  const bmi = await updateBMI(BMIID, BMIContent);
   res.status(201).send(bmi);
 });
 //end of BMI
@@ -377,8 +377,8 @@ app.post("/createnote", async (req, res) => {
 });
 
 app.put("/updatenote", async (req, res) => {
-  const {NoteContent, NoteID } = req.body;
-  const note = await updateNote(NoteContent, NoteID);
+  const {NoteID, NoteContent } = req.body;
+  const note = await updateNote(NoteID, NoteContent);
   res.status(201).send(note);
 });
 //end of Note
