@@ -15,13 +15,12 @@ This is a web application that records and tracks users' fitness sessions.
 12. Start Live Server after clicking on index.html to use the website on localhost:5500. 
 
 # Division of Work
-Nam Bui: 
-ER Diagram, Relational Schema, Database Design, Mock Data Creation, Frontend, Project Presentation, Project Report
-Henry Choy: 
-ER Diagram, Relational Schema, Database Design, Frontend
-Alvin Lee: 
-ER Diagram, Relational Schema, Database Design, Frontend, Backend, Project Presentation
-Andy Liu: 
-ER Diagram, Relational Schema, Database Design, Frontend, Backend, Project Presentation
-Karthik Renuprasad: 
-ER Diagram, Relational Schema, Database Design, Frontend, Backend, Project Presentation, Project Report
+Nam Bui: ER Diagram, Relational Schema, Database Design, Mock Data Creation, Frontend, Project Presentation, Project Report
+
+Henry Choy: ER Diagram, Relational Schema, Database Design, Frontend
+
+Alvin Lee: ER Diagram, Relational Schema, Database Design, Frontend, Backend, Project Presentation
+
+Andy Liu: ER Diagram, Relational Schema, Database Design, Frontend, Backend, Project Presentation
+
+Karthik Renuprasad: ER Diagram, Relational Schema, Database Design, Frontend, Backend, Project Presentation, Project Report
