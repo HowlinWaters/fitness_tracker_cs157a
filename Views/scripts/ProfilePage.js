@@ -20,39 +20,6 @@ document.addEventListener("DOMContentLoaded", function (id) {
       // Function loadTable() is called to start loading the table from the database.
       loadPersonalInfo(userJSON);
     })
-
-    // Since activities data is in an array, each activity must be isolated from the array using the map() function to iterate through the activities.
-    // Then, each activity ID sends a fetch request to receive each
-    //   .then(function (activitiesData) {
-    //     // This requires iteration with map() to go through all the data.
-    //     const activityIDs = activitiesData.map((activity) => activity.ActivityID);
-    //     const activityFetchPromises = activityIDs.map((activityID) =>
-    //       fetch(`http://localhost:8080/activities/${activityID}`, {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //       })
-    //     );
-
-    //     // Promise.all() ensures that all the iterated fetched activities are returned as a single Promise.
-    //     // Having multiple Promises returned may cause errors to the fetch chain (though I'm not exactly sure what errors would arise).
-    //     return Promise.all(activityFetchPromises);
-    //   })
-    //   // Another iteration/map is required to convert all the activities in the table to JSON format.
-    //   .then(function (activityResponses) {
-    //     const activityJSONPromises = activityResponses.map((response) =>
-    //       response.json()
-    //     );
-
-    //     // The activities in JSON format all get returned as a single Promise.
-    //     return Promise.all(activityJSONPromises);
-    //   })
-    //   .then(function (activityJSONs) {
-    //     console.log(activityJSONs);
-    //     // Function loadTable() is called to start loading the table from the database.
-    //     loadTable(activityJSONs);
-    //   })
-    // Any errors in the fetch chain are caught below.
     .catch(function (error) {
       console.error("Error:", error);
     });
@@ -142,6 +109,35 @@ function loadMilestones() {
       loadMSTable(milestonesData);
     });
 }
+
+const addMilestone = document.querySelector("#addMilestone");
+
+// JavaScript to handle adding entries to the table
+addMilestone.onclick = () => {
+  var milestone = prompt("Enter milestone:");
+
+  if (milestone) {
+    fetch("http://localhost:8080/createmilestone", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-cache",
+      body: JSON.stringify({
+        Milestone: milestone,
+        ProfileID: sessionStorage.getItem("GlobalUserID"),
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+    location.reload();
+  } else {
+    alert("Please enter valid values for all fields.");
+  }
+};
 
 function loadMSTable(data) {
   console.log(data);
