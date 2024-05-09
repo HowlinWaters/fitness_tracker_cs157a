@@ -77,36 +77,33 @@ function loadNote() {
 
 function loadMilestones() {
   fetch(
-    "http://localhost:8080/profile/" + sessionStorage.getItem("GlobalUserID"),
+    `http://localhost:8080/profilemilestones/` +
+      sessionStorage.getItem("GlobalUserID"),
     {
       headers: {
         "Content-Type": "application/json",
       },
     }
   )
-    .then((profileRes) => profileRes.json())
-    .then((profileData) => {
-      console.log(profileData);
-      return fetch(
-        `http://localhost:8080/profilemilestones/${profileData.ProfileID}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-    })
     .then((profileMSRes) => profileMSRes.json())
     .then((profileMSData) => {
       console.log(profileMSData);
-      return fetch(
-        `http://localhost:8080/milestones/${profileMSData.MilestoneID}`
-      );
+      const milestoneIDsArray = profileMSData.map((milestoneData) => milestoneData.MilestoneID);
+      console.log(milestoneIDsArray);
+      // Map through each milestone ID and fetch data for each milestone
+      const milestonePromises = milestoneIDsArray.map((milestoneID) => {
+        return fetch(`http://localhost:8080/milestones/${milestoneID}`).then(
+          (milestoneRes) => milestoneRes.json()
+        );
+      });
+      // Wait for all milestone data to be fetched
+      return Promise.all(milestonePromises);
     })
-    .then((milestonesRes) => milestonesRes.json())
     .then((milestonesData) => {
-      console.log(milestonesData);
       loadMSTable(milestonesData);
+    })
+    .catch((error) => {
+      console.error("Error loading milestones:", error);
     });
 }
 
@@ -145,13 +142,15 @@ function loadMSTable(data) {
   let table = document.querySelector("table tbody");
 
   let tableHTML = "";
-
-  data.forEach(function ({ Milestone, MilestoneID }) {
+  console.log(data);
+  
+  for (let i = 0; i < data.length; i++) {
+    var milestoneData = data[i][0];
     tableHTML += "<tr>";
-    tableHTML += `<td id="milestone">${Milestone}</td>`;
-    tableHTML += `<td><button class="edit-btn" data-id=${MilestoneID}>Edit</td>`;
+    tableHTML += `<td id="milestone">${milestoneData.Milestone}</td>`;
+    tableHTML += `<td><button class="edit-btn" data-id="${milestoneData.MilestoneID}">Edit</button></td>`;
     tableHTML += "</tr>";
-  });
+  }
 
   table.innerHTML = tableHTML;
 }

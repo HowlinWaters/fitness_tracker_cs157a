@@ -377,7 +377,7 @@ export async function getProfileMilestones(id) {
         SELECT * FROM ProfileHasMilestones WHERE ProfileID = ?`,
     [id]
   );
-  return result[0];
+  return result;
 }
 
 export async function createProfileMilestones(ProfileID, MilestoneID) {
