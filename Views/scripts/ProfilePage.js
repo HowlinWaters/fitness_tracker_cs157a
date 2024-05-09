@@ -68,13 +68,173 @@ function loadPersonalInfo(data) {
     document.getElementById("weight").textContent = data.Weight;
     document.getElementById("height").textContent = data.Height;
     document.getElementById("email").textContent = data.Email;
-    //   document.getElementById("bmi").textContent = data.bmi;
-    //   document.getElementById("personal-note").textContent = data.personalNote;
+    loadBMI();
+    loadNote();
 
-    // Example of adding a new milestone
-    // const milestonesList = document.getElementById("milestones-list");
-    // const newMilestone = document.createElement("li");
-    // newMilestone.textContent = "Bought a new house (May 2024)";
-    // milesstonesList.appendChild(newMilestone);
+    loadMilestones();
+}
 
+function loadBMI() {
+    fetch("http://localhost:8080/bmi/" + sessionStorage.getItem("GlobalUserID"), {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        console.log(data.BMIContent);
+        document.getElementById("bmi").textContent = data.BMIContent;
+    })
+}
+
+function loadNote() {
+    fetch("http://localhost:8080/note/" + sessionStorage.getItem("GlobalUserID"), {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        console.log(data.NoteContent);
+        document.getElementById("personal-note").textContent = data.NoteContent;
+    })
+}
+
+function loadMilestones() {
+    fetch("http://localhost:8080/profile/" + sessionStorage.getItem("GlobalUserID"), {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(profileRes => profileRes.json())
+    .then(profileData => {
+        console.log(profileData);
+        return fetch(`http://localhost:8080/profilemilestones/${profileData.ProfileID}`, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+    })
+    .then(profileMSRes => profileMSRes.json())
+    .then(profileMSData => {
+        console.log(profileMSData);
+        return fetch(`http://localhost:8080/milestones/${profileMSData.MilestoneID}`)
+    })
+    .then(milestonesRes => milestonesRes.json())
+    .then(milestonesData => {
+        console.log(milestonesData);
+        loadMSTable(milestonesData);
+    });
+}
+
+function loadMSTable(data) {
+    console.log(data);
+
+    let table = document.querySelector("table tbody");
+
+    let tableHTML = "";
+
+    data.forEach(function ({Milestone, MilestoneID}) {
+        tableHTML += "<tr>";
+        tableHTML += `<td id="milestone">${Milestone}</td>`
+        tableHTML += `<td><button class="edit-btn" data-id=${MilestoneID}>Edit</td>`;
+        tableHTML += "</tr>";
+    })
+
+    table.innerHTML = tableHTML;
+}
+
+const editButton = document.querySelector("#edit-profile");
+
+editButton.onclick = () => {
+    var name = prompt("Enter your name (one space between two names).");
+    var [fname, lname] = name.split(' ');
+    var dob = prompt("Enter your date of birth.");
+    var weight = prompt("Enter your weight.");
+    var height = prompt("Enter your height.");
+    var email = prompt("Enter your email");
+
+    if ((fname === "" || lname === "") && !(document.getElementById("name").textContent === "")) {
+        alert("Error! Must enter both first and last name fields.");
+        return;
+    }
+
+    fname = fname === "" ? document.getElementById("name").textContent.split(' ')[0] : fname;
+    lname = lname === "" ? document.getElementById("name").textContent.split(' ')[1] : lname;
+    dob = dob === "" ? document.getElementById("dob").textContent : dob;
+    let [month, day, year] = dob.split('/');
+    let dateObject = new Date(year, month - 1, day);
+    let dobFormat = dateObject.toISOString().split('T')[0];
+    weight = weight === "" ? document.getElementById("weight").textContent : weight;
+    height = height === "" ? document.getElementById("height").textContent : height;
+    email = email === "" ? document.getElementById("email").textContent : email;
+
+    var id = sessionStorage.getItem("GlobalUserID");
+
+    fetch("http://localhost:8080/updateusers", {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        cache: "no-cache",
+        body: JSON.stringify({
+            FName: fname,
+            LName: lname,
+            DOB: dobFormat,
+            Weight: weight,
+            Height: height,
+            Email: email,
+            UserID: id
+        })
+    })
+    .then(res => {
+        if (!res.ok) throw new Error("Failed to edit profile.");
+        res.json();
+    })
+    .then(data => {
+        console.log(data);
+        console.log(data);
+        location.reload();
+    })
+    .catch(error => console.log("Error:", error));
+}
+
+const editBMIBtn = document.querySelector("#editBMIButton");
+
+editBMIBtn.onclick = () => {
+    var bmi = prompt("Enter new BMI.");
+    var id = sessionStorage.getItem("GlobalUserID");
+
+    fetch("http://localhost:8080/bmi/" + id)
+    .then(res => res.json())
+    .then(existingBMI => {
+        // Update existing BMI record
+        console.log(existingBMI);
+        return fetch("http://localhost:8080/updatebmi", {
+            method: 'PUT',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            cache: "no-cache",
+            body: JSON.stringify({
+                BMIID: existingBMI.BMIID,
+                BMIContent: bmi
+            })
+        })
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Failed to update BMI.");
+        }
+        return res.json();
+    })
+    .then(data => {
+        console.log(data);
+        location.reload();
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
 }

@@ -455,8 +455,8 @@ export async function updateBMI(BMIID, BMIContent) {
   const [result] = await dbconnection.query(
     `
       UPDATE BMI
-      SET BMIID = ?, BMIContent = ?`,
-    [BMIID, BMIContent]
+      SET BMIContent = ? WHERE BMIID = ?`,
+    [BMIContent, BMIID]
   );
   return getBMI(BMIID);
 }
@@ -486,8 +486,8 @@ export async function updateNote(NoteID, NoteContent) {
   const [result] = await dbconnection.query(
     `
       UPDATE Note
-      SET NoteID = ?, NoteContent = ?`,
-    [NoteID, NoteContent]
+      SET NoteContent = ? WHERE NoteID = ?`,
+    [NoteContent, NoteID]
   );
   return getNote(NoteID);
 }

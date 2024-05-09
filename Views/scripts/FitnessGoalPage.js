@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("http://localhost:8080/users/1", {
+    fetch("http://localhost:8080/users/" + sessionStorage.getItem("GlobalUserID"), {
         headers: {
             "Content-Type": "application.json"
         }

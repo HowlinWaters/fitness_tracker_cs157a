@@ -9,6 +9,9 @@
 <body>
     <div class="container">
         <h1>User Profile</h1>
+        <div>
+            <button id="edit-profile">Edit Profile</button>
+        </div>
         <div class="profile-info">
             <h2>Personal Information</h2>
             <ul>
@@ -19,13 +22,24 @@
                 <li><strong>Email:</strong> <span id="email">johndoe@example.com</span></li>
                 <li><strong>BMI:</strong> <span id="bmi">placeholder</span></li>
             </ul>
+            <div class="editBMI">
+                <button id="editBMIButton">Edit BMI</button>
+            </div>
             <h2>Personal Note</h2>
             <p id="personal-note">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero et nibh placerat, sit amet varius dolor venenatis. Vivamus ultricies risus sit amet neque dictum, non rutrum risus eleifend.</p>
             <h2>Milestones</h2>
-            <ul class="milestones" id="milestones-list">
-                <li id="milestone1">placeholder</li>
-                <li id="milestone2">placeholder</li>
-            </ul>
+            <button id="addMilestone">Add Milestone</button>
+            <table class="milestones" id="milestones-list">
+                <thead>
+                    <tr>
+                        <th>Milestone</th>
+                        <th>Edit Milestone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Milestones table goes here.-->
+                </tbody>
+            </table>
         </div>
     </div>
     <script src="scripts/ProfilePage.js"></script>
