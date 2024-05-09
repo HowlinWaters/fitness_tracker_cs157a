@@ -56,8 +56,15 @@ document.addEventListener("DOMContentLoaded", function (id) {
 });
 
 function loadPersonalInfo(data) {
+    // Parse the UTC timestamp into a JavaScript Date object
+    var dobUTC = new Date(data.DOB);
+
+    // Convert the UTC timestamp to the local timezone
+    var dobLocal = dobUTC.toLocaleDateString();
+
+    // Update the DOM element with the converted date
+    document.getElementById("dob").textContent = dobLocal;
     document.getElementById("name").textContent = data.FName + " " + data.LName;
-    document.getElementById("dob").textContent = data.DOB;
     document.getElementById("weight").textContent = data.Weight;
     document.getElementById("height").textContent = data.Height;
     document.getElementById("email").textContent = data.Email;
