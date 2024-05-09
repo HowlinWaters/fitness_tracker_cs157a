@@ -5,7 +5,7 @@ This is a web application that records and tracks users' fitness sessions.
 1. Have MySQL already installed and set up.
 3. Clone this github repo
 4. Run CreateFitnessTracker.sql
-5. Run all of the Insert files to insert mock data into the tables
+5. Run InsertIntoTables.sql to insert example data into the database
 6. Install node.js v20
 7. Install Visual Studio Code
 8. Install the Live Server Extension by Ritwick Dey: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
