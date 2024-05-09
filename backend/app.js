@@ -358,7 +358,7 @@ app.post("/createbmi", async (req, res) => {
 
 app.put("/updatebmi", async (req, res) => {
   const { BMIID, BMIContent } = req.body;
-  const bmi = await updateBMI(BMIID, BMIContent);
+  const bmi = await updateBMI(BMIID, BMIContenSt);
   res.status(201).send(bmi);
 });
 //end of BMI
