@@ -48,7 +48,7 @@ table {
     border-collapse: collapse;
 }
 
-#edit-profile {
+button {
     padding: 10px 20px;
     font-size: 16px;
     background-color: #007bff;
@@ -56,43 +56,4 @@ table {
     border: none;
     border-radius: 5px;
     cursor: pointer;   
-}
-
-#editBMIButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;   
-}
-
-#editNoteButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;   
-}
-
-#edit-btn {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;   
-}
-#addMilestone {
-    padding: 10px 10px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }

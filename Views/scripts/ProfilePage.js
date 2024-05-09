@@ -40,7 +40,6 @@ function loadPersonalInfo(data) {
   document.getElementById("email").textContent = data.Email;
   loadBMI();
   loadNote();
-
   loadMilestones();
 }
 
@@ -88,7 +87,9 @@ function loadMilestones() {
     .then((profileMSRes) => profileMSRes.json())
     .then((profileMSData) => {
       console.log(profileMSData);
-      const milestoneIDsArray = profileMSData.map((milestoneData) => milestoneData.MilestoneID);
+      const milestoneIDsArray = profileMSData.map(
+        (milestoneData) => milestoneData.MilestoneID
+      );
       console.log(milestoneIDsArray);
       // Map through each milestone ID and fetch data for each milestone
       const milestonePromises = milestoneIDsArray.map((milestoneID) => {
@@ -136,6 +137,61 @@ addMilestone.onclick = () => {
   }
 };
 
+document.querySelector("table tbody").addEventListener("click", function (event) {
+    if (event.target.className === "delete-btn") {
+      var rowID = event.target.dataset.id;
+      deleteRowById(rowID);
+    }
+    if (event.target.className === "edit-btn") {
+      var rowID = event.target.dataset.id;
+      editRowById(rowID);
+    }
+  });
+
+// Row can be deleted once "Delete" button is pressed.
+function deleteRowById(id) {
+  // Send a fetch request with the activity ID argument.
+  fetch(`http://localhost:8080/deletemilestone/${id}`, {
+    method: "DELETE",
+  })
+    .then(function (res) {
+      if (!res.ok) throw new Error("Failed to delete row.");
+      // Current webpage reloads once the row is deleted from the database table.
+      location.reload();
+    })
+    .catch((error) => console.error("Failed to delete row."));
+}
+
+// Row can have its values edited once "Edit" button is pressed.
+function editRowById(id) {
+  // Prompts are similar to the function to add rows.
+  var milstone = prompt("Enter milestone");
+
+  if (milstone) {
+    fetch(`http://localhost:8080/updatemilestones/`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        MilestoneID: id,
+        Milestone: milstone,
+      }),
+      cache: "no-cache",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to update row.");
+        return res.json();
+      })
+      .then((data) => {
+        location.reload();
+      })
+      .catch((error) => console.error("Failed to update row."));
+  } else {
+    alert("Please enter valid values for all fields.");
+  }
+}
+
 function loadMSTable(data) {
   console.log(data);
 
@@ -143,11 +199,12 @@ function loadMSTable(data) {
 
   let tableHTML = "";
   console.log(data);
-  
+
   for (let i = 0; i < data.length; i++) {
     var milestoneData = data[i][0];
     tableHTML += "<tr>";
     tableHTML += `<td id="milestone">${milestoneData.Milestone}</td>`;
+    tableHTML += `<td><button class="delete-btn" data-id=${milestoneData.MilestoneID}>Delete</td>`;
     tableHTML += `<td><button class="edit-btn" data-id="${milestoneData.MilestoneID}">Edit</button></td>`;
     tableHTML += "</tr>";
   }
@@ -173,22 +230,18 @@ editButton.onclick = () => {
     return;
   }
 
-  fname =
-    fname === ""
-      ? document.getElementById("name").textContent.split(" ")[0]
-      : fname;
-  lname =
-    lname === ""
-      ? document.getElementById("name").textContent.split(" ")[1]
-      : lname;
+  fname === ""
+    ? document.getElementById("name").textContent.split(" ")[0]
+    : fname;
+  lname === ""
+    ? document.getElementById("name").textContent.split(" ")[1]
+    : lname;
   dob = dob === "" ? document.getElementById("dob").textContent : dob;
   let [month, day, year] = dob.split("/");
   let dateObject = new Date(year, month - 1, day);
   let dobFormat = dateObject.toISOString().split("T")[0];
-  weight =
-    weight === "" ? document.getElementById("weight").textContent : weight;
-  height =
-    height === "" ? document.getElementById("height").textContent : height;
+  weight === "" ? document.getElementById("weight").textContent : weight;
+  height === "" ? document.getElementById("height").textContent : height;
   email = email === "" ? document.getElementById("email").textContent : email;
 
   var id = sessionStorage.getItem("GlobalUserID");
