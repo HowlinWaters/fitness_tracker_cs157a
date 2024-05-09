@@ -294,9 +294,9 @@ app.put("/updatemilestones", async (req, res) => {
   res.status(201).send(milestone);
 });
 
-app.delete("/deletemilestone", async (req, res) => {
-  const { MilestoneID } = req.body;
-  const milestone = await deleteMilestone(MilestoneID);
+app.delete("/deletemilestone/:id", async (req, res) => {
+  const id = req.params.id;
+  const milestone = await deleteMilestone(id);
   res.send(milestone);
 });
 //end of milestones
